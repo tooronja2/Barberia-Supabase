@@ -1,0 +1,94 @@
+
+{
+  "name": "Barbería Estilo - Gestión",
+  "short_name": "Barbería Gestión",
+  "description": "Sistema de gestión interno PWA para empleados de Barbería Estilo",
+  "start_url": "/gestion",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "id": "barberia-estilo-gestion",
+  "prefer_related_applications": false,
+  "version": "3.1.0",
+  "icons": [
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "es",
+  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "Ver Turnos",
+      "short_name": "Turnos",
+      "description": "Ver turnos del día",
+      "url": "/gestion?tab=turnos",
+      "icons": [
+        {
+          "src": "/lovable-uploads/b7d8c7e7-9a7f-490f-a88f-8529bede7dea.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
