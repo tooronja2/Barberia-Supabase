@@ -1,16 +1,17 @@
 {
   "name": "barberia-supabase",
   "version": "1.0.0",
-  "description": "## 📋 Descripción del Proyecto",
-  "main": "create_tables.js",
+  "description": "Barbería Central - Sistema de reservas premium con Supabase",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "echo 'Static site - open index.html'",
+    "dev": "echo 'Static site - open index.html in browser'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tooronja2/Barberia-Supabase.git"
   },
-  "keywords": [],
+  "keywords": ["barbershop", "reservations", "supabase", "static-site"],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/tooronja2/Barberia-Supabase#readme",
   "dependencies": {
     "@supabase/supabase-js": "^2.50.3"
+  },
+  "engines": {
+    "node": ">=14.x"
   }
 }
