@@ -3,11 +3,47 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 // SECURE: Use configuration from secure config file
 const supabaseUrl = 'https://aooxkgxqdzddwfojfipd.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU2Nzg4MTEsImV4cCI6MjA1MTI1NDgxMX0.P1n_8vQVcJ9.eyJpc3Mi3Mi01JzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU2Nzg4MTEsImV4cCI6MjA1MTI1NDgxMX0' // ← REPLACE THIS WITH YOUR NEW KEY
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE2MzU3NTgsImV4cCI6MjA2NzIxMTc1OH0.4Pp-gqb7ZCMVl7txSCM2wTxxXv1CPWZ1phCMyLUK5fQ'
 
 console.log('🔒 SECURITY: Using protected Supabase configuration')
+console.log('🔍 Supabase URL:', supabaseUrl)
+console.log('🔍 Anon Key Length:', supabaseAnonKey.length)
+console.log('🔍 Anon Key Preview:', supabaseAnonKey.substring(0, 50) + '...')
+
+// Validate JWT format (should have exactly 3 parts separated by dots)
+const jwtParts = supabaseAnonKey.split('.')
+if (jwtParts.length !== 3) {
+  console.error('❌ INVALID JWT: Should have 3 parts, but has', jwtParts.length)
+  console.error('❌ JWT Parts:', jwtParts.map(part => part.substring(0, 20) + '...'))
+} else {
+  console.log('✅ JWT Format Valid: 3 parts detected')
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+// Test connection function
+export async function testSupabaseConnection() {
+  console.log('🧪 TESTING Supabase connection...')
+  
+  try {
+    // Simple test query
+    const { data, error } = await supabase
+      .from('barbers')
+      .select('id, name')
+      .limit(1)
+    
+    if (error) {
+      console.error('❌ CONNECTION TEST FAILED:', error)
+      return { success: false, error }
+    }
+    
+    console.log('✅ CONNECTION TEST SUCCESSFUL:', data)
+    return { success: true, data }
+  } catch (err) {
+    console.error('❌ CONNECTION TEST EXCEPTION:', err)
+    return { success: false, error: err }
+  }
+}
 
 // Helper functions for database operations
 export const db = {

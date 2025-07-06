@@ -1,4 +1,4 @@
-import { db, supabase } from './supabase.js';
+import { db, supabase, testSupabaseConnection } from './supabase.js';
 import { getServiceImageWithFallback } from './service-images.js';
 
 // Reservation state
