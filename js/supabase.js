@@ -3,7 +3,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 // SECURE: Use configuration from secure config file
 const supabaseUrl = 'https://aooxkgxqdzddwfojfipd.supabase.co'
-const supabaseAnonKey = 'REPLACE_WITH_YOUR_NEW_ANON_KEY' // ← REPLACE THIS WITH YOUR NEW KEY
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU2Nzg4MTEsImV4cCI6MjA1MTI1NDgxMX0.P1n_8vQVcJ9.eyJpc3Mi3Mi01JzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU2Nzg4MTEsImV4cCI6MjA1MTI1NDgxMX0' // ← REPLACE THIS WITH YOUR NEW KEY
 
 console.log('🔒 SECURITY: Using protected Supabase configuration')
 
