@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería Central - Donde el estilo cobra vida</title>
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=20250706-button-fix">
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">BARBERÍA CENTRAL</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="reserva.html">Reserva tu Turno</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>BARBERÍA CENTRAL</h1>
+            <p>Donde el estilo cobra vida</p>
+            <a href="reserva.html" class="cta-button">Reservar Turno Ahora</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid" id="servicesGrid">
+            <!-- Services will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contacto</h2>
+                <p><strong>Dirección:</strong> Av. Central 1234, Buenos Aires</p>
+                <p><strong>Teléfono:</strong> +54 11 1234-5678</p>
+                <p><strong>Email:</strong> info@barberiacentral.com</p>
+                <p><strong>Horarios:</strong></p>
+                <p>Lunes a Viernes: 9:00 - 19:00</p>
+                <p>Sábados: 9:00 - 17:00</p>
+                <p>Domingos: Cerrado</p>
+                
+                <div class="contact-buttons">
+                    <a href="tel:+5411123456789" class="contact-button">Llamar Ahora</a>
+                    <a href="https://wa.me/5411123456789" class="contact-button" target="_blank">WhatsApp</a>
+                </div>
+            </div>
+            
+            <div class="contact-map">
+                <h3>Ubicación</h3>
+                <p>Estamos ubicados en el corazón de Buenos Aires, fácil acceso en transporte público.</p>
+                <div class="map-container" style="height: 300px; border-radius: 8px; margin-top: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); overflow: hidden;">
+                    <!-- Embedded Google Maps without API key -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52562.86782496923!2d-58.41394069999999!3d-34.60373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e8e!2sAv.%20Central%2C%20Buenos%20Aires%2C%20Argentina!5e0!3m2!1ses!2sar!4v1641234567890!5m2!1ses!2sar"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: contrast(1.1) saturate(0.8);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Barbería Central. Todos los derechos reservados.</p>
+        <p>Desarrollado con tecnología moderna y atención personalizada</p>
+    </footer>
+
+    <!-- Management Link -->
+    <a href="admin-login.html" class="management-link">Panel Admin</a>
+
+    <!-- JavaScript -->
+    <script type="module" src="js/main.js?v=20250706-button-fix"></script>
+    <script src="js/scroll-animations.js?v=20250705-animations"></script>
+</body>
+</html>

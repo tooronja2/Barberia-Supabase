@@ -1,0 +1,23 @@
+{
+  "name": "barberia-supabase",
+  "version": "1.0.0",
+  "description": "## 📋 Descripción del Proyecto",
+  "main": "create_tables.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tooronja2/Barberia-Supabase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tooronja2/Barberia-Supabase/issues"
+  },
+  "homepage": "https://github.com/tooronja2/Barberia-Supabase#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.3"
+  }
+}

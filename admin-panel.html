@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Barbería Central</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-panel-body">
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="admin-header-content">
+            <div class="admin-logo">
+                <h1>BARBERÍA CENTRAL</h1>
+                <span class="admin-subtitle">Panel de Administración</span>
+            </div>
+            <div class="admin-user-info">
+                <span id="welcomeMessage">Bienvenido, Barbero</span>
+                <button id="logoutButton" class="logout-button">Salir</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Statistics Cards -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card confirmed">
+                    <div class="stat-icon">✓</div>
+                    <div class="stat-content">
+                        <h3 id="confirmedCount">0</h3>
+                        <p>Confirmados Hoy</p>
+                    </div>
+                </div>
+                <div class="stat-card cancelled">
+                    <div class="stat-icon">✗</div>
+                    <div class="stat-content">
+                        <h3 id="cancelledCount">0</h3>
+                        <p>Cancelados Hoy</p>
+                    </div>
+                </div>
+                <div class="stat-card revenue">
+                    <div class="stat-icon">$</div>
+                    <div class="stat-content">
+                        <h3 id="revenueAmount">$0</h3>
+                        <p>Ingresos Hoy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="dateFilter">Fecha:</label>
+                    <input type="date" id="dateFilter" class="filter-input">
+                </div>
+                <button id="refreshButton" class="refresh-button">Actualizar</button>
+            </div>
+        </section>
+
+        <!-- Appointments Section -->
+        <section class="appointments-section">
+            <h2>Mis Turnos</h2>
+            <div class="appointments-container">
+                <div class="appointments-table-container">
+                    <table class="appointments-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Cliente</th>
+                                <th>Servicio</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsTableBody">
+                            <tr id="loadingRow">
+                                <td colspan="6" class="loading-cell">
+                                    <div class="loading-spinner"></div>
+                                    Cargando turnos...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="noAppointments" class="no-appointments" style="display: none;">
+                    <div class="no-appointments-icon">📅</div>
+                    <h3>No hay turnos para esta fecha</h3>
+                    <p>Selecciona otra fecha o verifica la agenda</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Appointment Details Modal -->
+    <div id="appointmentModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalles del Turno</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="appointment-details">
+                    <div class="detail-row">
+                        <label>Cliente:</label>
+                        <span id="modalClientName"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Email:</label>
+                        <span id="modalClientEmail"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Teléfono:</label>
+                        <span id="modalClientPhone"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Fecha:</label>
+                        <span id="modalDate"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Hora:</label>
+                        <span id="modalTime"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Servicio:</label>
+                        <span id="modalService"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Precio:</label>
+                        <span id="modalPrice"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Estado:</label>
+                        <span id="modalStatus"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Observaciones:</label>
+                        <span id="modalObservations"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelAppointmentBtn" class="btn btn-danger">Cancelar Turno</button>
+                <button id="confirmAppointmentBtn" class="btn btn-success">Confirmar Turno</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/admin-panel.js"></script>
+</body>
+</html>

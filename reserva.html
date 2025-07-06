@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Turno - Barbería Central</title>
+    <!-- Premium Google Fonts - SYNCHRONIZED WITH INDEX -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=20250706-button-fix">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">BARBERÍA CENTRAL</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="reserva.html">Reserva tu Turno</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Reservation Container -->
+    <div class="reservation-container">
+        <h1 style="text-align: center; color: #f6ad37; margin-bottom: 2rem;">Reservar Turno</h1>
+        
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+            <div class="progress-step active" data-step="1">1</div>
+            <div class="progress-step" data-step="2">2</div>
+            <div class="progress-step" data-step="3">3</div>
+            <div class="progress-step" data-step="4">4</div>
+            <div class="progress-step" data-step="5">5</div>
+            <div class="progress-step" data-step="6">6</div>
+        </div>
+
+        <!-- Step 1: Service Selection -->
+        <div class="step-container active" data-step="1">
+            <h2 class="step-title">Selecciona tu Servicio</h2>
+            <div class="service-grid" id="serviceSelection">
+                <!-- Services will be loaded dynamically from Supabase with real durations -->
+                <div style="text-align: center; color: #b8b8b8; padding: 3rem;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                    <p>Cargando servicios desde Supabase...</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Duraciones dinámicas basadas en base de datos</p>
+                </div>
+            </div>
+            <div class="step-navigation">
+                <button class="step-button" disabled>Anterior</button>
+                <button class="step-button" id="nextStep1" disabled>Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Barber Selection -->
+        <div class="step-container" data-step="2">
+            <h2 class="step-title">Selecciona tu Barbero</h2>
+            <div class="barber-grid" id="barberSelection">
+                <!-- Barbers will be loaded dynamically -->
+            </div>
+            <div class="step-navigation">
+                <button class="step-button" id="prevStep2">Anterior</button>
+                <button class="step-button" id="nextStep2" disabled>Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Date Selection -->
+        <div class="step-container" data-step="3">
+            <h2 class="step-title">Selecciona la Fecha</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav" id="prevMonth">‹</button>
+                    <h3 id="currentMonth" style="color: #f6ad37;">Enero 2024</h3>
+                    <button class="calendar-nav" id="nextMonth">›</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar days will be generated -->
+                </div>
+            </div>
+            <div class="step-navigation">
+                <button class="step-button" id="prevStep3">Anterior</button>
+                <button class="step-button" id="nextStep3" disabled>Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Time Selection -->
+        <div class="step-container" data-step="4">
+            <h2 class="step-title">Selecciona la Hora</h2>
+            <div class="selected-info" style="background-color: #2d3748; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <p><strong>Fecha seleccionada:</strong> <span id="selectedDateDisplay">-</span></p>
+                <p><strong>Barbero:</strong> <span id="selectedBarberDisplay">-</span></p>
+                <p><strong>Servicio:</strong> <span id="selectedServiceDisplay">-</span></p>
+            </div>
+            <div class="hours-grid" id="hoursSelection">
+                <!-- Available hours will be loaded dynamically -->
+            </div>
+            <div class="step-navigation">
+                <button class="step-button" id="prevStep4">Anterior</button>
+                <button class="step-button" id="nextStep4" disabled>Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Customer Details -->
+        <div class="step-container" data-step="5">
+            <h2 class="step-title">Completa tus Datos</h2>
+            <form id="customerForm">
+                <div class="form-group">
+                    <label for="customerName">Nombre completo *</label>
+                    <input type="text" id="customerName" name="customerName" required minlength="2" placeholder="Ingresa tu nombre completo">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+54 11 1234-5678">
+                </div>
+                <div class="form-group">
+                    <label for="observations">Observaciones (opcional)</label>
+                    <textarea id="observations" name="observations" rows="3" placeholder="¿Alguna preferencia específica o comentario?"></textarea>
+                </div>
+            </form>
+            <div class="step-navigation">
+                <button class="step-button" id="prevStep5">Anterior</button>
+                <button class="step-button" id="nextStep5" disabled>Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Step 6: Confirmation -->
+        <div class="step-container" data-step="6">
+            <h2 class="step-title">Confirma tu Reserva</h2>
+            <div class="confirmation-summary">
+                <h3>Resumen de tu Turno</h3>
+                <p><strong>Nombre:</strong> <span id="confirmName">-</span></p>
+                <p><strong>Servicio:</strong> <span id="confirmService">-</span></p>
+                <p><strong>Precio:</strong> $<span id="confirmPrice">-</span></p>
+                <p><strong>Barbero:</strong> <span id="confirmBarber">-</span></p>
+                <p><strong>Fecha:</strong> <span id="confirmDate">-</span></p>
+                <p><strong>Hora:</strong> <span id="confirmTime">-</span></p>
+                <p><strong>Email:</strong> <span id="confirmEmail">-</span></p>
+                <p><strong>Teléfono:</strong> <span id="confirmPhone">-</span></p>
+                <p><strong>Observaciones:</strong> <span id="confirmObservations">-</span></p>
+            </div>
+            <div class="step-navigation">
+                <button class="step-button" id="prevStep6">Anterior</button>
+                <button class="step-button" id="confirmReservation" style="background-color: #38a169;">Confirmar Reserva</button>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="step-container" data-step="success" style="text-align: center; display: none;">
+            <div class="success-icon" style="font-size: 4rem; color: #38a169; margin-bottom: 1rem;">✅</div>
+            <h2 class="step-title" style="color: #38a169;">¡Reserva Confirmada!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #b8b8b8;">Tu turno ha sido reservado exitosamente</p>
+            
+            <div class="reservation-details" style="background-color: #2d3748; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; text-align: left;">
+                <h3 style="color: #d4af37; margin-bottom: 1.5rem; text-align: center;">Detalles de tu reserva:</h3>
+                <p><strong>Nombre:</strong> <span id="successName">-</span></p>
+                <p><strong>Servicio:</strong> <span id="successService">-</span></p>
+                <p><strong>Barbero:</strong> <span id="successBarber">-</span></p>
+                <p><strong>Fecha:</strong> <span id="successDate">-</span></p>
+                <p><strong>Hora:</strong> <span id="successTime">-</span></p>
+                <p><strong>Precio:</strong> $<span id="successPrice">-</span></p>
+                <p><strong>Email:</strong> <span id="successEmail">-</span></p>
+                <p><strong>Teléfono:</strong> <span id="successPhone">-</span></p>
+                <p><strong>Observaciones:</strong> <span id="successObservations">-</span></p>
+                <p style="margin-top: 1.5rem; color: #a0aec0; text-align: center;">
+                    Número de reserva: <span id="reservationNumber" style="color: #f6ad37; font-weight: bold;"></span>
+                </p>
+            </div>
+            
+            <div class="confirmation-actions" style="display: flex; gap: 1rem; justify-content: center;">
+                <button class="step-button" id="newReservation" style="background-color: #d4af37; color: #0a0a0a;">
+                    Nueva Reserva
+                </button>
+                <a href="index.html" class="step-button" style="background-color: #38a169; text-decoration: none; color: white;">
+                    Ir al Inicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="js/reserva.js?v=20250706-button-fix"></script>
+    <script src="force_refresh.js?v=20250706-button-fix"></script>
+</body>
+</html>

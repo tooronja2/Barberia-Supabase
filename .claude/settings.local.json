@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(env)",
+      "Bash(supabase status:*)",
+      "Bash(supabase login:*)",
+      "Bash(sudo apt:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(npx @supabase/mcp-server:*)",
+      "Bash(mkdir:*)",
+      "Bash(python3:*)",
+      "Bash(grep:*)",
+      "Bash(pkill:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)"
+    ],
+    "deny": []
+  }
+}

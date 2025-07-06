@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST - Imágenes Barbería</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .test-section {
+            margin-bottom: 3rem;
+            background: #4a5568;
+            padding: 2rem;
+            border-radius: 20px;
+        }
+        .force-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block !important;
+            background: red !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 style="text-align: center; color: #f6ad37; margin-bottom: 2rem;">🧪 TEST DE IMÁGENES</h1>
+        
+        <!-- Test 1: Imágenes directas -->
+        <div class="test-section">
+            <h2 style="color: #f6ad37; margin-bottom: 1rem;">Test 1: Imágenes Directas de Unsplash</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3>Corte de Barba</h3>
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=250&fit=crop" alt="Corte de barba" class="force-image">
+                </div>
+                <div>
+                    <h3>Corte de Pelo</h3>
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=250&fit=crop" alt="Corte de pelo" class="force-image">
+                </div>
+                <div>
+                    <h3>Barbero Héctor</h3>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Héctor" class="force-image" style="border-radius: 50%;">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Test 2: Servicios con estructura exacta -->
+        <div class="test-section">
+            <h2 style="color: #f6ad37; margin-bottom: 1rem;">Test 2: Servicios con Estructura Exacta</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=250&fit=crop" alt="Corte de barba" class="service-image">
+                    <h3>Corte de barba</h3>
+                    <p>Perfilado y arreglo profesional de barba con técnicas tradicionales</p>
+                    <div class="service-price">$6,500</div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=250&fit=crop" alt="Corte de pelo" class="service-image">
+                    <h3>Corte de pelo</h3>
+                    <p>Corte de pelo personalizado según tu estilo y preferencias</p>
+                    <div class="service-price">$8,500</div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=250&fit=crop" alt="Corte máquina" class="service-image">
+                    <h3>Corte todo máquina</h3>
+                    <p>Rapado a máquina profesional en todo el cabello</p>
+                    <div class="service-price">$8,000</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Test 3: Barberos con estructura exacta -->
+        <div class="test-section">
+            <h2 style="color: #f6ad37; margin-bottom: 1rem;">Test 3: Barberos con Estructura Exacta</h2>
+            <div class="barber-grid">
+                <div class="barber-card">
+                    <div class="barber-photo">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Héctor Medina">
+                    </div>
+                    <h3>Héctor Medina</h3>
+                    <p>Especialista en cortes clásicos y arreglo de barba tradicional. 15 años de experiencia.</p>
+                </div>
+                
+                <div class="barber-card">
+                    <div class="barber-photo">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" alt="Lucas Peralta">
+                    </div>
+                    <h3>Lucas Peralta</h3>
+                    <p>Experto en estilos modernos, degradados y tendencias actuales. Especializado en jóvenes.</p>
+                </div>
+                
+                <div class="barber-card">
+                    <div class="barber-photo">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face" alt="Camila González">
+                    </div>
+                    <h3>Camila González</h3>
+                    <p>Especialista en tratamientos capilares, coloración y cuidado integral del cabello.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Test 4: URLs de verificación -->
+        <div class="test-section">
+            <h2 style="color: #f6ad37; margin-bottom: 1rem;">Test 4: URLs de Verificación</h2>
+            <div style="background: #2d3748; padding: 1rem; border-radius: 10px;">
+                <p><strong>URLs utilizadas:</strong></p>
+                <ul style="color: #a0aec0; font-family: monospace; font-size: 0.8rem;">
+                    <li>Corte barba: https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=250&fit=crop</li>
+                    <li>Corte pelo: https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=250&fit=crop</li>
+                    <li>Corte máquina: https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=250&fit=crop</li>
+                    <li>Héctor: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face</li>
+                    <li>Lucas: https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face</li>
+                    <li>Camila: https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🧪 TEST PAGE LOADED');
+            
+            // Check if images load
+            const images = document.querySelectorAll('img');
+            console.log(`🖼️ Total images found: ${images.length}`);
+            
+            images.forEach((img, index) => {
+                img.onload = () => {
+                    console.log(`✅ Image ${index + 1} loaded successfully: ${img.src}`);
+                };
+                img.onerror = () => {
+                    console.error(`❌ Image ${index + 1} failed to load: ${img.src}`);
+                };
+            });
+        });
+    </script>
+</body>
+</html>

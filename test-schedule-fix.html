@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test: Schedule Fix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        .test-section {
+            background: #2d3748;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .test-pass {
+            background: #28a745;
+            color: white;
+        }
+        .test-fail {
+            background: #dc3545;
+            color: white;
+        }
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .day-card {
+            background: #4a5568;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .day-card.working {
+            background: #28a745;
+        }
+        .day-card.not-working {
+            background: #dc3545;
+        }
+        .button {
+            background: #f6ad37;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .log-output {
+            background: #1a1a1a;
+            border: 1px solid #4a5568;
+            border-radius: 4px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test: Schedule Fix</h1>
+    
+    <div class="test-section">
+        <h2>📅 Test de Disponibilidad por Día</h2>
+        <p><strong>Fecha de prueba:</strong> <span id="testDate"></span> (Sábado)</p>
+        
+        <h3>Barberos:</h3>
+        <select id="barberSelect">
+            <option value="1">Héctor Medina</option>
+            <option value="2">Lucas Peralta</option>
+            <option value="3">Camila González</option>
+        </select>
+        
+        <button class="button" onclick="testBarberSchedules()">Test Horarios</button>
+        <button class="button" onclick="testTodayAvailability()">Test Disponibilidad Hoy</button>
+        <button class="button" onclick="clearLog()">Limpiar Log</button>
+        
+        <h3>Horarios por Día de la Semana:</h3>
+        <div id="scheduleGrid" class="schedule-grid"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>⏰ Test de Horarios Específicos</h2>
+        <p>Probando horarios de hoy (sábado) para el barbero seleccionado:</p>
+        
+        <div id="timeSlots"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📝 Console Log</h2>
+        <div id="logOutput" class="log-output"></div>
+    </div>
+
+    <script type="module">
+        import { db } from './js/supabase.js';
+        
+        // Override console.log to capture output
+        const originalConsoleLog = console.log;
+        const logOutput = document.getElementById('logOutput');
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            const logEntry = document.createElement('div');
+            logEntry.textContent = args.join(' ');
+            logOutput.appendChild(logEntry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        };
+        
+        const originalConsoleError = console.error;
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            const logEntry = document.createElement('div');
+            logEntry.style.color = '#ff6b6b';
+            logEntry.textContent = 'ERROR: ' + args.join(' ');
+            logOutput.appendChild(logEntry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        };
+        
+        // Set test date (today - Saturday July 5)
+        const testDate = new Date('2025-07-05'); // Saturday
+        document.getElementById('testDate').textContent = testDate.toLocaleDateString('es-ES');
+        
+        window.clearLog = function() {
+            logOutput.innerHTML = '';
+        };
+        
+        window.testBarberSchedules = async function() {
+            const barberId = parseInt(document.getElementById('barberSelect').value);
+            console.log(`🧪 Testing schedules for barber ${barberId}...`);
+            
+            try {
+                const schedules = await db.getBarberSchedules(barberId);
+                
+                // Create schedule grid
+                const scheduleGrid = document.getElementById('scheduleGrid');
+                scheduleGrid.innerHTML = '';
+                
+                const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+                
+                for (let day = 0; day <= 6; day++) {
+                    const dayCard = document.createElement('div');
+                    dayCard.className = 'day-card';
+                    
+                    const schedule = schedules ? schedules.find(s => s.day_of_week === day) : null;
+                    
+                    if (schedule) {
+                        dayCard.classList.add('working');
+                        dayCard.innerHTML = `
+                            <h4>${dayNames[day]}</h4>
+                            <p><strong>Día ${day}</strong></p>
+                            <p>🌅 ${schedule.morning_start} - ${schedule.morning_end}</p>
+                            <p>🌆 ${schedule.afternoon_start} - ${schedule.afternoon_end}</p>
+                        `;
+                        console.log(`✅ ${dayNames[day]} (${day}): CONFIGURED`);
+                    } else {
+                        dayCard.classList.add('not-working');
+                        dayCard.innerHTML = `
+                            <h4>${dayNames[day]}</h4>
+                            <p><strong>Día ${day}</strong></p>
+                            <p>❌ Sin horarios</p>
+                        `;
+                        console.log(`❌ ${dayNames[day]} (${day}): NOT CONFIGURED`);
+                    }
+                    
+                    scheduleGrid.appendChild(dayCard);
+                }
+                
+                // Test specific to today (Saturday = day 6)
+                const saturdaySchedule = schedules ? schedules.find(s => s.day_of_week === 6) : null;
+                if (saturdaySchedule) {
+                    console.log(`🎉 SATURDAY (today) IS CONFIGURED for barber ${barberId}!`);
+                    console.log(`   Morning: ${saturdaySchedule.morning_start} - ${saturdaySchedule.morning_end}`);
+                    console.log(`   Afternoon: ${saturdaySchedule.afternoon_start} - ${saturdaySchedule.afternoon_end}`);
+                } else {
+                    console.log(`⚠️ SATURDAY (today) IS NOT CONFIGURED for barber ${barberId}!`);
+                }
+                
+            } catch (error) {
+                console.error('Failed to test barber schedules:', error);
+            }
+        };
+        
+        window.testTodayAvailability = async function() {
+            const barberId = parseInt(document.getElementById('barberSelect').value);
+            const today = testDate.toISOString().split('T')[0]; // 2025-07-05
+            
+            console.log(`🧪 Testing availability for barber ${barberId} on ${today} (Saturday)...`);
+            
+            // Test some sample times
+            const testTimes = ['09:00', '10:30', '14:00', '15:30', '17:00', '18:30'];
+            const timeSlotsDiv = document.getElementById('timeSlots');
+            timeSlotsDiv.innerHTML = '';
+            
+            for (const time of testTimes) {
+                try {
+                    console.log(`⏰ Testing time slot: ${time}...`);
+                    const isAvailable = await db.isTimeSlotAvailable(barberId, today, time, 15);
+                    
+                    const timeSlot = document.createElement('div');
+                    timeSlot.style.cssText = `
+                        display: inline-block; 
+                        padding: 10px 15px; 
+                        margin: 5px; 
+                        border-radius: 5px; 
+                        background: ${isAvailable ? '#28a745' : '#dc3545'}; 
+                        color: white;
+                    `;
+                    timeSlot.textContent = `${time} ${isAvailable ? '✅' : '❌'}`;
+                    timeSlotsDiv.appendChild(timeSlot);
+                    
+                    console.log(`${isAvailable ? '✅' : '❌'} ${time}: ${isAvailable ? 'AVAILABLE' : 'NOT AVAILABLE'}`);
+                } catch (error) {
+                    console.error(`Error testing time ${time}:`, error);
+                }
+            }
+        };
+        
+        // Auto-run first test
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                console.log('🚀 Starting automatic schedule test...');
+                testBarberSchedules();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

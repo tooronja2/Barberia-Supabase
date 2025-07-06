@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test: Dynamic Schedules</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        .test-section {
+            background: #2d3748;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .button {
+            background: #f6ad37;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .log-output {
+            background: #1a1a1a;
+            border: 1px solid #4a5568;
+            border-radius: 4px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .time-slot {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .time-slot.morning {
+            background: #28a745;
+            color: white;
+        }
+        .time-slot.afternoon {
+            background: #007bff;
+            color: white;
+        }
+        .calendar-preview {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin: 15px 0;
+        }
+        .calendar-day {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #4a5568;
+            border-radius: 4px;
+        }
+        .calendar-day.today {
+            background: #f6ad37;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+        .calendar-day.disabled {
+            background: #dc3545;
+            color: white;
+        }
+        .calendar-day.enabled {
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test: Dynamic Schedules & Current Day Fix</h1>
+    
+    <div class="test-section">
+        <h2>📅 Calendar Test: ¿Está el día de hoy seleccionable?</h2>
+        <p><strong>Hoy:</strong> <span id="todayDate"></span> (<span id="todayName"></span>)</p>
+        
+        <h3>Calendario de ejemplo (últimos 3 días + hoy + próximos 3):</h3>
+        <div id="calendarPreview" class="calendar-preview"></div>
+        
+        <button class="button" onclick="testCalendarLogic()">Test Lógica de Calendario</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>⏰ Dynamic Schedule Test</h2>
+        <p>Probando horarios dinámicos desde Supabase:</p>
+        
+        <div>
+            <label>Barbero:</label>
+            <select id="barberSelect">
+                <option value="1">Héctor Medina (ID: 1)</option>
+                <option value="2">Lucas Peralta (ID: 2)</option>
+                <option value="3">Camila González (ID: 3)</option>
+            </select>
+        </div>
+        
+        <div>
+            <label>Fecha:</label>
+            <input type="date" id="testDate" />
+        </div>
+        
+        <button class="button" onclick="testDynamicHours()">Test Horarios Dinámicos</button>
+        <button class="button" onclick="testTodaySchedule()">Test Horarios de Hoy</button>
+        
+        <h3>Horarios Generados:</h3>
+        <div id="timeSlots" class="time-slots"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔧 Test de Modificación en Vivo</h2>
+        <p>Instrucciones para probar:</p>
+        <ol>
+            <li>Ve a Supabase y modifica el horario de un barbero</li>
+            <li>Ejemplo: Cambia de 9:00-12:00 a 10:00-13:00</li>
+            <li>Presiona el botón "Refresh & Test" para ver si se refleja</li>
+        </ol>
+        
+        <button class="button" onclick="testAfterSupabaseChange()">Refresh & Test After Supabase Change</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📝 Console Log</h2>
+        <button class="button" onclick="clearLog()">Clear Log</button>
+        <div id="logOutput" class="log-output"></div>
+    </div>
+
+    <script type="module">
+        import { db } from './js/supabase.js';
+        
+        // Setup console capture
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const logOutput = document.getElementById('logOutput');
+        
+        function addToLog(message, isError = false) {
+            const logEntry = document.createElement('div');
+            logEntry.textContent = message;
+            if (isError) logEntry.style.color = '#ff6b6b';
+            logOutput.appendChild(logEntry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            addToLog(args.join(' '));
+        };
+        
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            addToLog('ERROR: ' + args.join(' '), true);
+        };
+        
+        window.clearLog = function() {
+            logOutput.innerHTML = '';
+        };
+        
+        // Setup initial data
+        const today = new Date();
+        document.getElementById('todayDate').textContent = today.toLocaleDateString('es-ES');
+        document.getElementById('todayName').textContent = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'][today.getDay()];
+        document.getElementById('testDate').value = today.toISOString().split('T')[0];
+        
+        // Calendar test functions
+        window.testCalendarLogic = function() {
+            console.log('🧪 Testing calendar logic...');
+            
+            const calendarPreview = document.getElementById('calendarPreview');
+            calendarPreview.innerHTML = '';
+            
+            // Test days around today
+            for (let i = -3; i <= 3; i++) {
+                const testDate = new Date(today);
+                testDate.setDate(today.getDate() + i);
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                // Apply same logic as reserva.js
+                const dayDateOnly = new Date(testDate.getFullYear(), testDate.getMonth(), testDate.getDate());
+                const todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                
+                const isToday = dayDateOnly.getTime() === todayDateOnly.getTime();
+                const isPast = dayDateOnly < todayDateOnly;
+                
+                if (isToday) {
+                    dayElement.classList.add('today');
+                    dayElement.textContent = `${testDate.getDate()} (HOY)`;
+                    console.log(`✅ Today (${testDate.getDate()}): ENABLED`);
+                } else if (isPast) {
+                    dayElement.classList.add('disabled');
+                    dayElement.textContent = `${testDate.getDate()} (PAST)`;
+                    console.log(`❌ Past day (${testDate.getDate()}): DISABLED`);
+                } else {
+                    dayElement.classList.add('enabled');
+                    dayElement.textContent = `${testDate.getDate()} (FUTURE)`;
+                    console.log(`✅ Future day (${testDate.getDate()}): ENABLED`);
+                }
+                
+                calendarPreview.appendChild(dayElement);
+            }
+        };
+        
+        // Dynamic hours test
+        window.testDynamicHours = async function() {
+            const barberId = parseInt(document.getElementById('barberSelect').value);
+            const selectedDate = new Date(document.getElementById('testDate').value);
+            
+            console.log(`🧪 Testing dynamic hours for barber ${barberId} on ${selectedDate.toDateString()}...`);
+            
+            try {
+                // Test the new generateDynamicHours function
+                const hours = await generateDynamicHours(barberId, selectedDate);
+                displayTimeSlots(hours);
+                
+            } catch (error) {
+                console.error('Error testing dynamic hours:', error);
+            }
+        };
+        
+        window.testTodaySchedule = async function() {
+            const barberId = parseInt(document.getElementById('barberSelect').value);
+            console.log(`🧪 Testing TODAY'S schedule for barber ${barberId}...`);
+            
+            try {
+                const hours = await generateDynamicHours(barberId, today);
+                displayTimeSlots(hours);
+                
+                if (hours.length === 0) {
+                    console.log('⚠️ No hours available for today - barber might not work today');
+                } else {
+                    console.log(`✅ Found ${hours.length} available time slots for today`);
+                }
+                
+            } catch (error) {
+                console.error('Error testing today schedule:', error);
+            }
+        };
+        
+        window.testAfterSupabaseChange = async function() {
+            console.log('🔄 Testing after Supabase change - forcing fresh data...');
+            
+            // Clear any potential cache and re-test
+            const barberId = parseInt(document.getElementById('barberSelect').value);
+            const selectedDate = new Date(document.getElementById('testDate').value);
+            
+            try {
+                // Force a fresh schedule fetch
+                const schedules = await db.getBarberSchedules(barberId);
+                console.log('📊 Fresh schedules from Supabase:', schedules);
+                
+                const hours = await generateDynamicHours(barberId, selectedDate);
+                displayTimeSlots(hours);
+                
+                console.log('✅ Test completed - check if changes are reflected above');
+                
+            } catch (error) {
+                console.error('Error testing after Supabase change:', error);
+            }
+        };
+        
+        function displayTimeSlots(hours) {
+            const timeSlotsDiv = document.getElementById('timeSlots');
+            timeSlotsDiv.innerHTML = '';
+            
+            if (hours.length === 0) {
+                timeSlotsDiv.innerHTML = '<p style="color: #ff6b6b;">No hay horarios disponibles</p>';
+                return;
+            }
+            
+            hours.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                
+                const [hour] = time.split(':').map(Number);
+                if (hour < 14) {
+                    slot.classList.add('morning');
+                } else {
+                    slot.classList.add('afternoon');
+                }
+                
+                slot.textContent = time;
+                timeSlotsDiv.appendChild(slot);
+            });
+        }
+        
+        // Import the functions from reserva.js for testing
+        async function generateDynamicHours(barberId, selectedDate) {
+            console.log(`🕐 Generating dynamic hours for barber ${barberId} on ${selectedDate.toDateString()}...`);
+            
+            try {
+                const dayOfWeek = selectedDate.getDay();
+                console.log(`📅 Day of week: ${dayOfWeek} (${['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'][dayOfWeek]})`);
+                
+                const schedules = await db.getBarberSchedules(barberId);
+                
+                if (!schedules || schedules.length === 0) {
+                    console.log(`⚠️ No schedules found for barber ${barberId}`);
+                    return [];
+                }
+                
+                const todaySchedule = schedules.find(s => s.day_of_week === dayOfWeek && s.is_active);
+                
+                if (!todaySchedule) {
+                    console.log(`⚠️ No schedule found for barber ${barberId} on day ${dayOfWeek}`);
+                    return [];
+                }
+                
+                console.log(`✅ Found schedule:`, todaySchedule);
+                
+                const hours = [];
+                
+                if (todaySchedule.morning_start && todaySchedule.morning_end) {
+                    const morningHours = generateHourSlots(todaySchedule.morning_start, todaySchedule.morning_end);
+                    hours.push(...morningHours);
+                    console.log(`🌅 Morning slots: ${morningHours.join(', ')}`);
+                }
+                
+                if (todaySchedule.afternoon_start && todaySchedule.afternoon_end) {
+                    const afternoonHours = generateHourSlots(todaySchedule.afternoon_start, todaySchedule.afternoon_end);
+                    hours.push(...afternoonHours);
+                    console.log(`🌆 Afternoon slots: ${afternoonHours.join(', ')}`);
+                }
+                
+                return hours;
+                
+            } catch (error) {
+                console.error('❌ Error generating dynamic hours:', error);
+                return [];
+            }
+        }
+        
+        function generateHourSlots(startTime, endTime) {
+            const slots = [];
+            const [startHour, startMin] = startTime.split(':').map(Number);
+            const [endHour, endMin] = endTime.split(':').map(Number);
+            
+            const startMinutes = startHour * 60 + startMin;
+            const endMinutes = endHour * 60 + endMin;
+            
+            for (let currentMinutes = startMinutes; currentMinutes < endMinutes; currentMinutes += 15) {
+                const hour = Math.floor(currentMinutes / 60);
+                const minute = currentMinutes % 60;
+                const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+                slots.push(timeString);
+            }
+            
+            return slots;
+        }
+        
+        // Auto-run tests
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                console.log('🚀 Running automatic tests...');
+                testCalendarLogic();
+                setTimeout(testTodaySchedule, 1000);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
