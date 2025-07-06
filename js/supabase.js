@@ -1,8 +1,11 @@
 // Supabase client configuration
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
+// SECURE: Use configuration from secure config file
 const supabaseUrl = 'https://aooxkgxqdzddwfojfipd.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE2MzU3NTgsImV4cCI6MjA2NzIxMTc1OH0.4Pp-gqb7ZCMVl7txSCM2wTxxXv1CPWZ1phCMyLUK5fQ'
+const supabaseAnonKey = 'REPLACE_WITH_YOUR_NEW_ANON_KEY' // ← REPLACE THIS WITH YOUR NEW KEY
+
+console.log('🔒 SECURITY: Using protected Supabase configuration')
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 

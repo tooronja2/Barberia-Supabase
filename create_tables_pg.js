@@ -9,7 +9,7 @@ const connectionString = 'postgresql://postgres:your_password@db.aooxkgxqdzddwfo
 const { createClient } = require('@supabase/supabase-js');
 
 const supabaseUrl = 'https://aooxkgxqdzddwfojfipd.supabase.co';
-const supabaseServiceKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTYzNTc1OCwiZXhwIjoyMDY3MjExNzU4fQ.7kj1J-tgX5WIHSBv8KIHbL_D6DM9JUzu3-aSizw6n5I';
+const supabaseServiceKey = 'REPLACE_WITH_YOUR_KEY';
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 

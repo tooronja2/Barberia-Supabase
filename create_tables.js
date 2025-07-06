@@ -1,8 +1,8 @@
 const { createClient } = require('@supabase/supabase-js');
 
-// Supabase configuration
+// Supabase configuration - USE ENVIRONMENT VARIABLES
 const supabaseUrl = 'https://aooxkgxqdzddwfojfipd.supabase.co';
-const supabaseServiceKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvb3hrZ3hxZHpkZHdmb2pmaXBkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTYzNTc1OCwiZXhwIjoyMDY3MjExNzU4fQ.7kj1J-tgX5WIHSBv8KIHbL_D6DM9JUzu3-aSizw6n5I';
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY || 'REPLACE_WITH_YOUR_SERVICE_KEY';
 
 // Initialize Supabase client with service role key
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
