@@ -1372,18 +1372,20 @@ html, body {
   
   .header-container {
     padding: 0 var(--space-sm);
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
   }
   
   .nav-top {
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* space-x-4 equivalent */
   }
   
   .nav-left,
   .nav-right {
     position: static;
     justify-content: center;
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* space-x-4 equivalent */
   }
   
   .nav-left {
@@ -1447,134 +1449,173 @@ html, body {
   
   /* Hero section mobile */
   .hero {
-    padding: var(--space-xl) 0 var(--space-lg);
+    padding: var(--space-xl) 0 var(--space-lg); /* mt-12 equivalent */
     margin-top: 0;
+    height: auto;
   }
   
   .hero-content {
     text-align: center;
-    padding: 0 var(--space-sm);
+    padding: 0 var(--space-md); /* px-4 equivalent */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
   }
   
   .hero-content h1 {
-    font-size: var(--text-2xl);
-    line-height: 1.2;
+    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
+    line-height: 1.1; /* leading-tight */
     margin-bottom: var(--space-md);
   }
   
   .hero-content p {
     font-size: var(--text-base);
     margin-bottom: var(--space-lg);
+    line-height: 1.1; /* leading-tight */
   }
   
   .btn-primary {
-    padding: var(--space-sm) var(--space-lg);
+    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
     font-size: var(--text-sm);
   }
   
-  /* Services section mobile */
+  /* Services section mobile - Grid 2 columns square cards */
   .services {
-    padding: var(--space-lg) var(--space-sm);
+    padding: var(--space-xl) var(--space-md); /* mt-12 vertical spacing */
   }
   
   .services h2 {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
+    max-width: 448px; /* max-w-md equivalent */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* reduced gaps */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
+    padding: 0 var(--space-md); /* px-4 equivalent */
   }
   
   .service-card {
-    padding: var(--space-md);
+    padding: 1.5rem; /* p-6 equivalent */
+    aspect-ratio: 1; /* aspect-square */
+    min-height: unset; /* remove fixed min-height */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   
   .service-card h3 {
     font-size: var(--text-base);
     margin-bottom: var(--space-xs);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-card p {
     font-size: var(--text-sm);
     margin-bottom: var(--space-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-card .service-price {
     font-size: var(--text-base);
+    line-height: 1.1; /* leading-tight */
   }
   
   /* Contact section mobile */
   .contact {
-    padding: var(--space-lg) var(--space-sm);
+    padding: var(--space-xl) var(--space-md); /* mt-12 vertical spacing */
   }
   
   .contact h2 {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
+    max-width: 448px; /* max-w-md equivalent */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   
   .contact-container {
-    gap: var(--space-md);
+    gap: var(--space-sm); /* reduced gaps */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
+    padding: 0 var(--space-md); /* px-4 equivalent */
   }
   
   .contact-info {
-    padding: var(--space-md);
+    padding: 1.5rem; /* p-6 equivalent */
+    height: auto;
   }
   
   .contact-info h2 {
     font-size: var(--text-lg);
+    line-height: 1.1; /* leading-tight */
     margin-bottom: var(--space-md);
   }
   
   .contact-info p {
     font-size: var(--text-sm);
     margin-bottom: var(--space-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
   .contact-map h3 {
     font-size: var(--text-lg);
+    line-height: 1.1; /* leading-tight */
     margin-bottom: var(--space-md);
   }
   
   .contact-map p {
     font-size: var(--text-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
   .contact-buttons {
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* reduced gaps */
   }
   
   .contact-button {
     text-align: center;
-    padding: var(--space-sm);
+    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
     font-size: var(--text-sm);
   }
   
   /* Footer mobile */
   .footer {
-    padding: var(--space-md) var(--space-sm);
+    padding: var(--space-lg) var(--space-md); /* mt-12 vertical spacing */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
   }
   
   .footer-content {
     flex-direction: column;
     text-align: center;
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* reduced gaps */
   }
   
   .footer-content p {
     font-size: var(--text-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
-  /* Reservations mobile */
+  /* Reservations mobile - optimized proportions */
   .progress-indicator {
-    gap: var(--space-xs);
-    padding: 0 var(--space-xs);
+    gap: var(--space-sm); /* space-x-4 equivalent */
+    padding: 0 var(--space-md); /* px-4 equivalent */
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
   }
   
   .progress-step {
@@ -1584,51 +1625,61 @@ html, body {
   }
   
   .progress-step::after {
-    width: var(--space-xs);
+    width: var(--space-sm);
   }
   
   .reservation-container {
-    padding: var(--space-md) var(--space-sm);
+    padding: var(--space-lg) var(--space-md); /* mt-12 vertical, px-4 horizontal */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
   }
   
   .step-title {
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
   }
   
   .service-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* reduced gaps */
   }
   
   .barber-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-sm);
+    gap: var(--space-sm); /* reduced gaps */
   }
   
   .service-option,
   .barber-option {
-    padding: var(--space-sm);
+    padding: 1.5rem; /* p-6 equivalent */
+    aspect-ratio: 1; /* aspect-square */
+    min-height: unset; /* remove fixed min-height */
+    height: auto;
   }
   
   .service-option h3,
   .barber-option h3 {
     font-size: var(--text-sm);
     margin-bottom: var(--space-xs);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-option p,
   .barber-option p {
     font-size: 12px;
     margin-bottom: var(--space-xs);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-price {
     font-size: var(--text-base);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-duration {
     font-size: 11px !important;
+    line-height: 1.1; /* leading-tight */
   }
   
   .barber-photo {
@@ -1639,13 +1690,13 @@ html, body {
   
   .step-navigation {
     flex-direction: column;
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
+    gap: var(--space-sm); /* reduced gaps */
+    margin-top: var(--space-lg); /* mt-12 equivalent */
   }
   
   .step-button {
     width: 100%;
-    padding: var(--space-sm);
+    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
     font-size: var(--text-sm);
   }
   
@@ -1684,55 +1735,71 @@ html, body {
 }
 
 @media (max-width: 480px) {
-  /* Extra small screens */
+  /* Extra small screens - maintain proportions */
   .header-container {
     padding: 0 var(--space-xs);
+    max-width: 100%;
   }
   
   .hero-content {
     padding: 0 var(--space-xs);
+    max-width: 100%;
   }
   
   .hero-content h1 {
-    font-size: var(--text-xl);
+    font-size: clamp(1.5rem, 4vw, 2rem); /* adjusted fluid scaling */
+    line-height: 1.1; /* leading-tight */
   }
   
   .hero-content p {
     font-size: var(--text-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
   .services,
   .contact {
-    padding: var(--space-md) var(--space-xs);
+    padding: var(--space-md) var(--space-xs); /* mt-12 equivalent */
   }
   
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* single column for very small screens */
     gap: var(--space-xs);
+    padding: 0 var(--space-xs);
   }
   
   .service-card {
-    padding: var(--space-sm);
+    padding: var(--space-md); /* smaller p-6 equivalent */
+    aspect-ratio: unset; /* remove aspect-square for single column */
+    height: auto;
   }
   
   .service-card h3 {
     font-size: var(--text-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-card p {
     font-size: 12px;
+    line-height: 1.1; /* leading-tight */
+  }
+  
+  .contact-container {
+    gap: var(--space-xs);
+    padding: 0 var(--space-xs);
   }
   
   .contact-info {
-    padding: var(--space-sm);
+    padding: var(--space-md); /* smaller p-6 equivalent */
   }
   
   .reservation-container {
-    padding: var(--space-sm) var(--space-xs);
+    padding: var(--space-md) var(--space-xs); /* mt-12 vertical */
+    max-width: 100%;
   }
   
   .progress-indicator {
     padding: 0;
+    gap: var(--space-xs);
   }
   
   .progress-step {
@@ -1743,23 +1810,27 @@ html, body {
   
   .service-grid,
   .barber-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* single column for very small screens */
     gap: var(--space-xs);
   }
   
   .service-option,
   .barber-option {
-    padding: var(--space-xs);
+    padding: var(--space-md); /* smaller p-6 equivalent */
+    aspect-ratio: unset; /* remove aspect-square for single column */
+    height: auto;
   }
   
   .service-option h3,
   .barber-option h3 {
     font-size: 12px;
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-option p,
   .barber-option p {
     font-size: 10px;
+    line-height: 1.1; /* leading-tight */
   }
   
   .barber-photo {
@@ -1774,12 +1845,17 @@ html, body {
   }
   
   .hours-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* single column for very small screens */
+    gap: var(--space-xs);
   }
   
   .hour-option {
     font-size: 10px;
     padding: var(--space-xs);
+  }
+  
+  .step-button {
+    padding: 0.5rem 1rem; /* smaller px-6 py-3 equivalent */
   }
 }
 
