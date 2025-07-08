@@ -814,6 +814,14 @@ body::before {
   background: var(--gold-accent);
 }
 
+.service-option .service-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+
 .service-option h3 {
   font-family: var(--font-heading);
   color: var(--pure-white);

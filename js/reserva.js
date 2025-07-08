@@ -170,7 +170,7 @@ async function loadServices() {
                 // CRITICAL: Use dynamic duration from Supabase
                 const duration = service.duration_minutes || 15; // fallback to 15 if missing
                 return `
-                    <div class="service-card-reservation" data-service-id="${service.id}" data-duration="${duration}" style="animation-delay: ${index * 0.1}s">
+                    <div class="service-option" data-service-id="${service.id}" data-duration="${duration}" style="animation-delay: ${index * 0.1}s">
                         <img src="${service.image_url}" alt="${service.name}" class="service-image" loading="lazy">
                         <h3>${service.name}</h3>
                         <p>${service.description}</p>
@@ -183,7 +183,7 @@ async function loadServices() {
             }).join('');
             
             // Add click handlers for service selection
-            serviceSelection.querySelectorAll('.service-card-reservation').forEach(card => {
+            serviceSelection.querySelectorAll('.service-option').forEach(card => {
                 card.addEventListener('click', () => selectService(card, services));
             });
             
@@ -201,7 +201,7 @@ async function loadServices() {
             serviceSelection.innerHTML = fallbackServices.map((service, index) => {
                 const duration = service.duration_minutes || 15;
                 return `
-                    <div class="service-card-reservation" data-service-id="${service.id}" data-duration="${duration}" style="animation-delay: ${index * 0.1}s">
+                    <div class="service-option" data-service-id="${service.id}" data-duration="${duration}" style="animation-delay: ${index * 0.1}s">
                         <img src="${service.image_url}" alt="${service.name}" class="service-image" loading="lazy">
                         <h3>${service.name}</h3>
                         <p>${service.description}</p>
@@ -213,7 +213,7 @@ async function loadServices() {
                 `;
             }).join('');
             
-            serviceSelection.querySelectorAll('.service-card-reservation').forEach(card => {
+            serviceSelection.querySelectorAll('.service-option').forEach(card => {
                 card.addEventListener('click', () => selectService(card, fallbackServices));
             });
         }
@@ -356,7 +356,7 @@ function selectService(card, services) {
     console.log('🛍️ Seleccionando servicio...');
     
     // Remove previous selection
-    const allServiceCards = document.querySelectorAll('.service-card-reservation');
+    const allServiceCards = document.querySelectorAll('.service-option');
     console.log(`🔄 Limpiando ${allServiceCards.length} tarjetas de servicio`);
     allServiceCards.forEach(c => c.classList.remove('selected'));
     
