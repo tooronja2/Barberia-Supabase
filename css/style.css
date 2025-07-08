@@ -1150,24 +1150,77 @@ body::before {
   color: var(--luxury-gold);
 }
 
-/* Success/Error Messages */
-.message {
-  padding: var(--space-lg);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-lg);
+/* ===== CENTERED MESSAGES ===== */
+.no-hours-message {
   text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-grey);
+  grid-column: 1 / -1; /* Takes full width in grid */
 }
 
-.message.success {
-  background: rgba(72, 187, 120, 0.1);
-  border: 1px solid rgba(72, 187, 120, 0.3);
-  color: #68d391;
+.no-hours-message p {
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-lg);
 }
 
-.message.error {
-  background: rgba(245, 101, 101, 0.1);
-  border: 1px solid rgba(245, 101, 101, 0.3);
-  color: #fc8181;
+.no-hours-message p:first-child {
+  font-size: var(--text-xl);
+  color: var(--luxury-gold);
+}
+
+/* ===== LOADING STATES FOR RESERVATIONS ===== */
+/* Loading States for Reservations */
+.loading-container, .loading-container-reservation {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-grey);
+  grid-column: 1 / -1; /* Takes full width in grid */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-container .loading-spinner, .loading-container-reservation .loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--dark-grey);
+  border-top: 3px solid var(--luxury-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--space-md);
+}
+
+.loading-container .loading-text, .loading-container .loading-title, .loading-container-reservation .loading-title {
+  font-size: var(--text-lg);
+  color: var(--luxury-gold);
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.loading-container .loading-subtitle, .loading-container-reservation .loading-subtitle {
+  font-size: var(--text-base);
+  color: var(--text-grey);
+}
+
+/* No hay horarios mensaje */
+.no-times-available {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-grey);
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.no-times-available p {
+  font-size: var(--text-lg);
+  color: var(--text-grey);
+  margin: 0;
 }
 
 /* Navigation Active State */

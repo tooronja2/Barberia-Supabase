@@ -755,7 +755,7 @@ async function loadAvailableHours() {
     // Show message if no hours available
     if (filteredHours.length === 0) {
         hoursSelection.innerHTML = `
-            <div class="no-hours-message">
+            <div class="no-times-available">
                 <p>😔 No hay horarios disponibles para hoy</p>
                 <p>Por favor selecciona otra fecha</p>
             </div>
@@ -1150,7 +1150,7 @@ function updateConfirmationSummary() {
     // Update confirmation display
     document.getElementById('confirmName').textContent = customerData.name;
     document.getElementById('confirmService').textContent = reservationState.selectedService.name;
-    document.getElementById('confirmPrice').textContent = reservationState.selectedService.price.toLocaleString();
+    document.getElementById('confirmPrice').textContent = `$${reservationState.selectedService.price.toLocaleString()}`;
     document.getElementById('confirmBarber').textContent = reservationState.selectedBarber.name;
     document.getElementById('confirmDate').textContent = reservationState.selectedDate.toLocaleDateString('es-ES');
     document.getElementById('confirmTime').textContent = reservationState.selectedTime;
@@ -1195,7 +1195,7 @@ async function confirmReservation() {
         document.getElementById('successBarber').textContent = reservationState.selectedBarber.name;
         document.getElementById('successDate').textContent = reservationState.selectedDate.toLocaleDateString('es-ES');
         document.getElementById('successTime').textContent = appointmentData.appointment_time;
-        document.getElementById('successPrice').textContent = appointmentData.service_price.toLocaleString();
+        document.getElementById('successPrice').textContent = `$${appointmentData.service_price.toLocaleString()}`;
         document.getElementById('successEmail').textContent = appointmentData.email;
         document.getElementById('successPhone').textContent = appointmentData.phone;
         document.getElementById('successObservations').textContent = appointmentData.observations || 'Ninguna';
@@ -1225,6 +1225,9 @@ async function confirmReservation() {
 
 // Reset reservation
 function resetReservation() {
+    console.log('🔄 Reiniciando reserva...');
+    
+    // Reset state
     reservationState = {
         currentStep: 1,
         selectedService: null,
@@ -1242,7 +1245,15 @@ function resetReservation() {
     
     // Hide success and show step 1
     document.querySelector('[data-step="success"]').style.display = 'none';
-    goToStep(1);
+    
+    // Reload services to fresh state
+    loadServices().then(() => {
+        console.log('✅ Servicios recargados después de reset');
+        goToStep(1);
+    }).catch(error => {
+        console.error('❌ Error recargando servicios:', error);
+        goToStep(1);
+    });
 }
 
 // FUNCTION REMOVED: loadStaticServicesReservation replaced by getStaticServicesWithCentralizedImages
