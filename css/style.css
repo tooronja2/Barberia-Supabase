@@ -1367,23 +1367,23 @@ html, body {
 @media (max-width: 768px) {
   /* Header mobile adjustments */
   .header {
-    padding: var(--space-md) 0;
+    padding: var(--space-sm) 0;
   }
   
   .header-container {
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
   }
   
   .nav-top {
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
   
   .nav-left,
   .nav-right {
     position: static;
     justify-content: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
   
   .nav-left {
@@ -1392,7 +1392,12 @@ html, body {
   
   .brand-logo {
     order: 0;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .brand-logo img {
+    width: 60px;
+    height: 60px;
   }
   
   .nav-right {
@@ -1402,239 +1407,293 @@ html, body {
   .nav-left a,
   .nav-right a {
     font-size: var(--text-sm);
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-xs) var(--space-sm);
   }
   
   /* Hero section mobile */
   .hero {
-    padding: var(--space-3xl) 0 var(--space-2xl);
+    padding: var(--space-xl) 0 var(--space-lg);
     margin-top: 0;
   }
   
   .hero-content {
     text-align: center;
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
   }
   
   .hero-content h1 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
     line-height: 1.2;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
   }
   
   .hero-content p {
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-xl);
+    font-size: var(--text-base);
+    margin-bottom: var(--space-lg);
   }
   
   .btn-primary {
-    padding: var(--space-md) var(--space-xl);
-    font-size: var(--text-base);
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--text-sm);
   }
   
   /* Services section mobile */
   .services {
-    padding: var(--space-2xl) var(--space-md);
+    padding: var(--space-lg) var(--space-sm);
   }
   
   .services h2 {
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-lg);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-md);
   }
   
   .services-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
   }
   
   .service-card {
-    padding: var(--space-lg);
+    padding: var(--space-md);
   }
   
   .service-card h3 {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .service-card p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .service-card .service-price {
+    font-size: var(--text-base);
   }
   
   /* Contact section mobile */
   .contact {
-    padding: var(--space-2xl) var(--space-md);
+    padding: var(--space-lg) var(--space-sm);
   }
   
   .contact h2 {
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-lg);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-md);
   }
   
   .contact-container {
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
   
   .contact-info {
-    padding: var(--space-lg);
+    padding: var(--space-md);
   }
   
   .contact-info h2 {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-lg);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+  }
+  
+  .contact-info p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-sm);
   }
   
   .contact-map h3 {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-lg);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+  }
+  
+  .contact-map p {
+    font-size: var(--text-sm);
   }
   
   .contact-buttons {
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
   
   .contact-button {
     text-align: center;
-    padding: var(--space-md);
+    padding: var(--space-sm);
+    font-size: var(--text-sm);
   }
   
   /* Footer mobile */
   .footer {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-md) var(--space-sm);
   }
   
   .footer-content {
     flex-direction: column;
     text-align: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+  }
+  
+  .footer-content p {
+    font-size: var(--text-sm);
   }
   
   /* Reservations mobile */
   .progress-indicator {
-    gap: var(--space-sm);
-    padding: 0 var(--space-sm);
+    gap: var(--space-xs);
+    padding: 0 var(--space-xs);
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: var(--space-md);
   }
   
   .progress-step {
-    width: 35px;
-    height: 35px;
-    font-size: var(--text-sm);
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
   }
   
   .progress-step::after {
-    width: var(--space-sm);
+    width: var(--space-xs);
   }
   
   .reservation-container {
-    padding: var(--space-lg) var(--space-md);
+    padding: var(--space-md) var(--space-sm);
   }
   
   .step-title {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-lg);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
   }
   
-  .service-grid,
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+  
   .barber-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
   }
   
   .service-option,
   .barber-option {
-    padding: var(--space-md);
+    padding: var(--space-sm);
   }
   
   .service-option h3,
   .barber-option h3 {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .service-option p,
+  .barber-option p {
+    font-size: 12px;
+    margin-bottom: var(--space-xs);
   }
   
   .service-price {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
+  }
+  
+  .service-duration {
+    font-size: 11px !important;
+  }
+  
+  .barber-photo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: var(--space-xs);
   }
   
   .step-navigation {
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
   }
   
   .step-button {
     width: 100%;
-    padding: var(--space-md);
-    font-size: var(--text-base);
-  }
-  
-  .calendar-container {
-    padding: var(--space-md);
-    margin: 0;
-  }
-  
-  .calendar-table {
-    font-size: var(--text-sm);
-  }
-  
-  .calendar-day {
-    width: 35px;
-    height: 35px;
-    font-size: var(--text-sm);
-  }
-  
-  .hours-grid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: var(--space-sm);
-  }
-  
-  .hour-option {
     padding: var(--space-sm);
     font-size: var(--text-sm);
   }
   
-  .form-group input,
-  .form-group textarea {
+  .calendar-container {
+    padding: var(--space-sm);
+    margin: 0;
+  }
+  
+  .calendar-header {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .calendar-header h3 {
     font-size: var(--text-base);
-    padding: var(--space-md);
   }
   
-  .confirmation-summary {
-    padding: var(--space-md);
+  .calendar-table {
+    font-size: 12px;
   }
   
-  .confirmation-actions {
-    flex-direction: column !important;
-    gap: var(--space-md);
+  .calendar-day {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
   }
   
-  .confirmation-actions .step-button,
-  .confirmation-actions a {
-    width: 100%;
-    text-align: center;
-    padding: var(--space-md);
+  .hours-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xs);
+  }
+  
+  .hour-option {
+    padding: var(--space-xs);
+    font-size: 10px;
   }
 }
 
 @media (max-width: 480px) {
   /* Extra small screens */
   .header-container {
-    padding: 0 var(--space-sm);
+    padding: 0 var(--space-xs);
   }
   
   .hero-content {
-    padding: 0 var(--space-sm);
+    padding: 0 var(--space-xs);
   }
   
   .hero-content h1 {
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
+  }
+  
+  .hero-content p {
+    font-size: var(--text-sm);
   }
   
   .services,
   .contact {
-    padding: var(--space-xl) var(--space-sm);
+    padding: var(--space-md) var(--space-xs);
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+  
+  .service-card {
+    padding: var(--space-sm);
+  }
+  
+  .service-card h3 {
+    font-size: var(--text-sm);
+  }
+  
+  .service-card p {
+    font-size: 12px;
   }
   
   .contact-info {
-    padding: var(--space-md);
+    padding: var(--space-sm);
   }
   
   .reservation-container {
-    padding: var(--space-md) var(--space-sm);
+    padding: var(--space-sm) var(--space-xs);
   }
   
   .progress-indicator {
@@ -1642,18 +1701,142 @@ html, body {
   }
   
   .progress-step {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+  
+  .service-grid,
+  .barber-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+  
+  .service-option,
+  .barber-option {
+    padding: var(--space-xs);
+  }
+  
+  .service-option h3,
+  .barber-option h3 {
     font-size: 12px;
+  }
+  
+  .service-option p,
+  .barber-option p {
+    font-size: 10px;
+  }
+  
+  .barber-photo {
+    width: 40px;
+    height: 40px;
   }
   
   .calendar-day {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
   }
   
   .hours-grid {
-    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    grid-template-columns: 1fr;
+  }
+  
+  .hour-option {
+    font-size: 10px;
+    padding: var(--space-xs);
+  }
+}
+
+/* ===== ADDITIONAL MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  /* Improve service cards spacing */
+  .service-card .service-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: var(--space-xs);
+  }
+  
+  /* Better map container for mobile */
+  .map-container {
+    height: 200px !important;
+    margin-top: var(--space-sm) !important;
+  }
+  
+  /* Optimize loading states */
+  .loading-container-reservation {
+    padding: var(--space-md);
+    min-height: 120px;
+  }
+  
+  .loading-container-reservation .loading-spinner {
+    width: 30px;
+    height: 30px;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .loading-container-reservation .loading-title {
+    font-size: var(--text-base);
+  }
+  
+  .loading-container-reservation .loading-subtitle {
+    font-size: var(--text-sm);
+  }
+  
+  /* Compact no-times message */
+  .no-times-available {
+    padding: var(--space-md);
+    text-align: center;
+  }
+  
+  .no-times-available p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
+  }
+  
+  /* Better form layout */
+  .customer-form {
+    gap: var(--space-sm);
+  }
+  
+  /* Compact success message */
+  .success-icon {
+    font-size: 3rem !important;
+    margin-bottom: var(--space-sm) !important;
+  }
+  
+  .reservation-details {
+    padding: var(--space-sm);
+  }
+  
+  .reservation-details h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .reservation-details p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card .service-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .map-container {
+    height: 150px !important;
+  }
+  
+  .loading-container-reservation {
+    padding: var(--space-sm);
+    min-height: 100px;
+  }
+  
+  .loading-container-reservation .loading-spinner {
+    width: 25px;
+    height: 25px;
   }
 }
