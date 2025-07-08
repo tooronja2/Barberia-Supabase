@@ -1365,27 +1365,27 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  /* Header mobile adjustments */
+  /* Header mobile adjustments - optimized for 9:16 aspect ratio */
   .header {
-    padding: var(--space-sm) 0;
+    padding: 0.75rem 0; /* Reduce header height for vertical space */
   }
   
   .header-container {
-    padding: 0 var(--space-sm);
-    max-width: 448px; /* max-w-md equivalent */
+    padding: 0 1rem;
+    max-width: 100%;
     margin: 0 auto;
   }
   
   .nav-top {
     flex-direction: column;
-    gap: var(--space-sm); /* space-x-4 equivalent */
+    gap: 0.5rem;
   }
   
   .nav-left,
   .nav-right {
     position: static;
     justify-content: center;
-    gap: var(--space-sm); /* space-x-4 equivalent */
+    gap: 0.75rem;
   }
   
   .nav-left {
@@ -1394,12 +1394,7 @@ html, body {
   
   .brand-logo {
     order: 0;
-    margin-bottom: var(--space-xs);
-  }
-  
-  .brand-logo img {
-    width: 60px;
-    height: 60px;
+    margin-bottom: 0.25rem;
   }
   
   .nav-right {
@@ -1408,74 +1403,75 @@ html, body {
   
   .nav-left a,
   .nav-right a {
-    font-size: var(--text-sm);
-    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
   }
   
-  /* Logo optimizations */
+  /* Logo optimizations - smaller for mobile */
   .logo-container {
     margin: 0;
   }
   
   .logo-symbol {
-    width: 40px;
-    height: 40px;
-    font-size: var(--text-xl);
+    width: 35px;
+    height: 35px;
+    font-size: 1.125rem;
   }
   
   .logo-text .logo-main {
-    font-size: var(--text-base);
+    font-size: 0.875rem;
     letter-spacing: 1px;
   }
   
   .logo-text .logo-sub {
-    font-size: var(--text-xs);
+    font-size: 0.6875rem;
     letter-spacing: 1px;
   }
   
-  /* Social icons mobile */
+  /* Social icons mobile - smaller */
   .social-icons {
     position: absolute;
-    top: var(--space-xs);
-    right: var(--space-sm);
-    gap: var(--space-xs);
+    top: 0.25rem;
+    right: 0.5rem;
+    gap: 0.25rem;
   }
   
   .social-icon {
-    width: 30px;
-    height: 30px;
-    font-size: var(--text-sm);
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
   }
   
-  /* Hero section mobile */
+  /* Hero section mobile - optimized for 9:16 viewport */
   .hero {
-    padding: var(--space-xl) 0 var(--space-lg); /* mt-12 equivalent */
+    padding: 1.5rem 0 1rem; /* Reduced padding for vertical space */
     margin-top: 0;
     height: auto;
+    min-height: 25vh; /* 25% of viewport height for hero */
   }
   
   .hero-content {
     text-align: center;
-    padding: 0 var(--space-md); /* px-4 equivalent */
-    max-width: 448px; /* max-w-md equivalent */
+    padding: 0 1rem;
+    max-width: 100%;
     margin: 0 auto;
   }
   
   .hero-content h1 {
-    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
-    line-height: 1.1; /* leading-tight */
-    margin-bottom: var(--space-md);
+    font-size: clamp(1.5rem, 6vw, 2rem); /* More aggressive scaling for mobile */
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
   }
   
   .hero-content p {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-lg);
-    line-height: 1.1; /* leading-tight */
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
   }
   
   .btn-primary {
-    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
-    font-size: var(--text-sm);
+    padding: 0.5rem 1rem; /* Smaller button */
+    font-size: 0.75rem;
   }
   
   /* Services section mobile - Grid 2 columns square cards */
@@ -1520,7 +1516,7 @@ html, body {
   }
   
   .service-card p {
-    font-size: var(--text-sm);
+    font-size: 12px;
     margin-bottom: var(--space-sm);
     line-height: 1.1; /* leading-tight */
   }
@@ -1667,7 +1663,7 @@ html, body {
   
   .service-option p,
   .barber-option p {
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: var(--space-xs);
     line-height: 1.1; /* leading-tight */
   }
@@ -1807,148 +1803,398 @@ html, body {
     height: 25px;
     font-size: 10px;
   }
+}
+
+/* ===== ULTRA COMPACT MOBILE OPTIMIZATIONS FOR 9:16 ASPECT RATIO ===== */
+@media (max-width: 768px) {
+  /* Global section optimizations - DRÁSTICA REDUCCIÓN para 9:16 */
+  .hero {
+    padding: 0.5rem 0; /* Mínimo padding */
+    min-height: 25vh; /* Solo 25% del viewport */
+    margin-top: 0;
+  }
   
+  .hero-content {
+    padding: 0 0.75rem;
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem); /* MUY reducido para 9:16 */
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 13px;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  
+  .btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+  }
+  
+  /* Header ultra compacto */
+  .header {
+    padding: 0.25rem 0;
+  }
+  
+  .header-container {
+    padding: 0 0.5rem;
+  }
+  
+  .nav-top {
+    gap: 0.25rem;
+  }
+  
+  .nav-left a,
+  .nav-right a {
+    font-size: 10px;
+    padding: 0.125rem 0.375rem;
+  }
+  
+  .brand-logo img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* Social icons MUY pequeños */
+  .social-icons {
+    top: 0.125rem;
+    right: 0.375rem;
+    gap: 0.125rem;
+  }
+  
+  .social-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+  }
+  
+  /* Secciones principales compactas */
+  .services,
+  .contact {
+    padding: 0.75rem 0.5rem; /* Drásticamente reducido */
+  }
+  
+  .section-title {
+    font-size: clamp(1.125rem, 4vw, 1.5rem); /* Muy compacto */
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+  }
+  
+  /* Grid de servicios ultra compacto para 2 columnas */
+  .services-grid {
+    grid-template-columns: 1fr 1fr; /* Forzar 2 columnas */
+    gap: 0.5rem; /* Gap muy pequeño */
+    padding: 0 0.25rem;
+    max-width: 100%;
+  }
+  
+  .service-card {
+    padding: 0.75rem; /* Ultra compacto */
+    aspect-ratio: 1; /* Mantener cuadrado */
+    height: auto;
+    min-height: unset;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .service-card .service-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0.25rem;
+    flex-shrink: 0;
+  }
+  
+  .service-card h3 {
+    font-size: 11px;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+  
+  .service-card p {
+    font-size: 9px;
+    line-height: 1.1;
+    margin: 0;
+    opacity: 0.8;
+  }
+  
+  /* Contacto compacto */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
+  
+  .contact-info {
+    padding: 0.75rem;
+  }
+  
+  .contact-info h3 {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-info p {
+    font-size: 11px;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Footer compacto */
+  .footer {
+    padding: 0.5rem 0;
+  }
+  
+  .footer p {
+    font-size: 10px;
+    margin-bottom: 0.25rem;
+  }
+  
+  .management-link {
+    font-size: 10px;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.25rem;
+  }
+}
+
+/* ===== MÓVILES MUY PEQUEÑOS - SINGLE COLUMN ===== */
+@media (max-width: 480px) {
+  /* Una sola columna para móviles muy pequeños */
+  .services-grid {
+    grid-template-columns: 1fr; /* Solo 1 columna */
+    gap: 0.375rem;
+  }
+  
+  .service-card {
+    aspect-ratio: unset; /* Remover cuadrado en single column */
+    padding: 0.5rem;
+  }
+  
+  .service-card .service-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .service-card h3 {
+    font-size: 10px;
+  }
+  
+  .service-card p {
+    font-size: 8px;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(1rem, 4vw, 1.375rem);
+  }
+  
+  .hero-content p {
+    font-size: 11px;
+  }
+  
+  .section-title {
+    font-size: clamp(1rem, 3.5vw, 1.25rem);
+  }
+}
+
+/* ===== RESERVAS PAGE ULTRA COMPACT ===== */
+@media (max-width: 768px) {
+  .reservation-container {
+    padding: 0.75rem 0.5rem;
+    max-width: 100%;
+  }
+  
+  .progress-indicator {
+    gap: 0.375rem;
+    margin-bottom: 0.75rem;
+    padding: 0 0.25rem;
+  }
+  
+  .progress-step {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  
+  .step-title {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Service/Barber grids compactos */
   .service-grid,
   .barber-grid {
-    grid-template-columns: 1fr; /* single column for very small screens */
-    gap: var(--space-xs);
+    grid-template-columns: 1fr 1fr; /* 2 columnas */
+    gap: 0.5rem;
+    padding: 0 0.25rem;
   }
   
   .service-option,
   .barber-option {
-    padding: var(--space-md); /* smaller p-6 equivalent */
-    aspect-ratio: unset; /* remove aspect-square for single column */
+    padding: 0.5rem;
+    aspect-ratio: 1; /* Cuadrados */
+    min-height: unset;
     height: auto;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .service-option img,
+  .barber-option img {
+    width: 24px;
+    height: 24px;
+    border-radius: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .barber-photo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
   }
   
   .service-option h3,
   .barber-option h3 {
-    font-size: 12px;
-    line-height: 1.1; /* leading-tight */
+    font-size: 10px;
+    line-height: 1.1;
+    margin-bottom: 0.125rem;
+    font-weight: 600;
   }
   
   .service-option p,
   .barber-option p {
-    font-size: 10px;
-    line-height: 1.1; /* leading-tight */
+    font-size: 8px;
+    line-height: 1.1;
+    margin: 0;
+    opacity: 0.8;
   }
   
-  .barber-photo {
-    width: 40px;
-    height: 40px;
+  /* Calendar compacto */
+  .calendar-container {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .calendar-header h3 {
+    font-size: 12px;
+    margin-bottom: 0.375rem;
+  }
+  
+  .calendar-nav button {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .calendar-table {
+    font-size: 9px;
   }
   
   .calendar-day {
-    width: 25px;
-    height: 25px;
-    font-size: 10px;
+    width: 24px;
+    height: 24px;
+    font-size: 9px;
   }
   
+  /* Hours grid compacto */
   .hours-grid {
-    grid-template-columns: 1fr; /* single column for very small screens */
-    gap: var(--space-xs);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    padding: 0.5rem 0.25rem;
   }
   
   .hour-option {
-    font-size: 10px;
-    padding: var(--space-xs);
+    padding: 0.375rem 0.25rem;
+    font-size: 9px;
+    border-radius: 0.25rem;
+  }
+  
+  /* Form compacto */
+  .customer-form {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .form-group label {
+    font-size: 11px;
+    margin-bottom: 0.25rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    font-size: 12px;
+    padding: 0.5rem;
+    min-height: 36px;
+  }
+  
+  /* Step navigation compacto */
+  .step-navigation {
+    margin-top: 0.75rem;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
   }
   
   .step-button {
-    padding: 0.5rem 1rem; /* smaller px-6 py-3 equivalent */
-  }
-}
-
-/* ===== ADDITIONAL MOBILE OPTIMIZATIONS ===== */
-@media (max-width: 768px) {
-  /* Improve service cards spacing */
-  .service-card .service-icon {
-    width: 30px;
-    height: 30px;
-    margin-bottom: var(--space-xs);
+    padding: 0.5rem 0.75rem;
+    font-size: 11px;
   }
   
-  /* Better map container for mobile */
-  .map-container {
-    height: 200px !important;
-    margin-top: var(--space-sm) !important;
-  }
-  
-  /* Optimize loading states */
-  .loading-container-reservation {
-    padding: var(--space-md);
-    min-height: 120px;
-  }
-  
-  .loading-container-reservation .loading-spinner {
-    width: 30px;
-    height: 30px;
-    margin-bottom: var(--space-sm);
-  }
-  
-  .loading-container-reservation .loading-title {
-    font-size: var(--text-base);
-  }
-  
-  .loading-container-reservation .loading-subtitle {
-    font-size: var(--text-sm);
-  }
-  
-  /* Compact no-times message */
-  .no-times-available {
-    padding: var(--space-md);
-    text-align: center;
-  }
-  
-  .no-times-available p {
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-xs);
-  }
-  
-  /* Better form layout */
-  .customer-form {
-    gap: var(--space-sm);
-  }
-  
-  /* Compact success message */
+  /* Success message compacto */
   .success-icon {
-    font-size: 3rem !important;
-    margin-bottom: var(--space-sm) !important;
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
   }
   
   .reservation-details {
-    padding: var(--space-sm);
+    padding: 0.5rem;
   }
   
   .reservation-details h3 {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-sm);
+    font-size: 13px;
+    margin-bottom: 0.375rem;
   }
   
   .reservation-details p {
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-xs);
+    font-size: 10px;
+    margin-bottom: 0.25rem;
   }
 }
 
 @media (max-width: 480px) {
-  .service-card .service-icon {
-    width: 25px;
-    height: 25px;
+  /* Single column para reservas en móviles muy pequeños */
+  .service-grid,
+  .barber-grid {
+    grid-template-columns: 1fr;
+    gap: 0.375rem;
   }
   
-  .map-container {
-    height: 150px !important;
+  .service-option,
+  .barber-option {
+    aspect-ratio: unset;
+    padding: 0.375rem;
   }
   
-  .loading-container-reservation {
-    padding: var(--space-sm);
-    min-height: 100px;
+  .hours-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .loading-container-reservation .loading-spinner {
-    width: 25px;
-    height: 25px;
+  .progress-step {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
   }
 }
 
