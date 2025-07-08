@@ -611,14 +611,16 @@ body::before {
 
 .contact-map h3 {
   font-family: var(--font-heading);
-  font-size: var(--text-xl);
+  font-size: var(--text-3xl);
   color: var(--luxury-gold);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xl);
+  font-weight: 600;
 }
 
 .contact-map p {
   color: var(--text-grey);
   margin-bottom: var(--space-lg);
+  font-size: var(--text-base);
   line-height: 1.6;
 }
 
@@ -1230,6 +1232,88 @@ body::before {
   border-bottom-color: var(--luxury-gold);
 }
 
+/* ===== MOBILE OPTIMIZATIONS ===== */
+/* Prevent horizontal scrolling */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Improve touch targets */
+@media (max-width: 768px) {
+  .service-option,
+  .barber-option,
+  .hour-option,
+  .calendar-day {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Improve form elements */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    min-height: 44px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: var(--radius-sm);
+  }
+  
+  /* Better spacing for small screens */
+  .container {
+    padding: 0 var(--space-md);
+  }
+  
+  /* Improve readability */
+  .hero-content p,
+  .service-card p,
+  .contact-info p {
+    line-height: 1.6;
+  }
+  
+  /* Fix any potential layout issues */
+  .service-grid,
+  .barber-grid {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .service-option,
+  .barber-option {
+    width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+  
+  /* Improve button spacing */
+  .step-navigation {
+    margin-top: var(--space-xl);
+    gap: var(--space-md);
+  }
+  
+  /* Better calendar display */
+  .calendar-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .calendar-table {
+    min-width: 280px;
+  }
+  
+  /* Fix any text overflow */
+  .service-option h3,
+  .barber-option h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
 /* ===== RESPONSIVE UPDATES FOR RESERVATIONS ===== */
 @media (max-width: 1024px) {
   .contact-container {
@@ -1260,11 +1344,172 @@ body::before {
   .hours-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
+  
+  /* Header adjustments for tablet */
+  .header-container {
+    padding: 0 var(--space-lg);
+  }
+  
+  .nav-left,
+  .nav-right {
+    gap: var(--space-md);
+  }
+  
+  .hero-content h1 {
+    font-size: var(--text-4xl);
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
+  /* Header mobile adjustments */
+  .header {
+    padding: var(--space-md) 0;
+  }
+  
+  .header-container {
+    padding: 0 var(--space-md);
+  }
+  
+  .nav-top {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .nav-left,
+  .nav-right {
+    position: static;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+  
+  .nav-left {
+    order: 1;
+  }
+  
+  .brand-logo {
+    order: 0;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .nav-right {
+    order: 2;
+  }
+  
+  .nav-left a,
+  .nav-right a {
+    font-size: var(--text-sm);
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  /* Hero section mobile */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    margin-top: 0;
+  }
+  
+  .hero-content {
+    text-align: center;
+    padding: 0 var(--space-md);
+  }
+  
+  .hero-content h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.2;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .hero-content p {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-xl);
+  }
+  
+  .btn-primary {
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--text-base);
+  }
+  
+  /* Services section mobile */
+  .services {
+    padding: var(--space-2xl) var(--space-md);
+  }
+  
+  .services h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .service-card {
+    padding: var(--space-lg);
+  }
+  
+  .service-card h3 {
+    font-size: var(--text-lg);
+  }
+  
+  /* Contact section mobile */
+  .contact {
+    padding: var(--space-2xl) var(--space-md);
+  }
+  
+  .contact h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .contact-container {
+    gap: var(--space-lg);
+  }
+  
+  .contact-info {
+    padding: var(--space-lg);
+  }
+  
+  .contact-info h2 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .contact-map h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .contact-buttons {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .contact-button {
+    text-align: center;
+    padding: var(--space-md);
+  }
+  
+  /* Footer mobile */
+  .footer {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+  
+  /* Reservations mobile */
   .progress-indicator {
     gap: var(--space-sm);
+    padding: 0 var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .progress-step {
@@ -1277,34 +1522,138 @@ body::before {
     width: var(--space-sm);
   }
   
+  .reservation-container {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .step-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-lg);
+  }
+  
   .service-grid,
   .barber-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  
+  .service-option,
+  .barber-option {
+    padding: var(--space-md);
+  }
+  
+  .service-option h3,
+  .barber-option h3 {
+    font-size: var(--text-base);
+  }
+  
+  .service-price {
+    font-size: var(--text-lg);
   }
   
   .step-navigation {
     flex-direction: column;
+    gap: var(--space-md);
   }
   
   .step-button {
     width: 100%;
+    padding: var(--space-md);
+    font-size: var(--text-base);
   }
   
   .calendar-container {
     padding: var(--space-md);
+    margin: 0;
+  }
+  
+  .calendar-table {
+    font-size: var(--text-sm);
+  }
+  
+  .calendar-day {
+    width: 35px;
+    height: 35px;
+    font-size: var(--text-sm);
   }
   
   .hours-grid {
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--space-sm);
+  }
+  
+  .hour-option {
+    padding: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    font-size: var(--text-base);
+    padding: var(--space-md);
+  }
+  
+  .confirmation-summary {
+    padding: var(--space-md);
   }
   
   .confirmation-actions {
     flex-direction: column !important;
+    gap: var(--space-md);
   }
   
   .confirmation-actions .step-button,
   .confirmation-actions a {
     width: 100%;
     text-align: center;
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .header-container {
+    padding: 0 var(--space-sm);
+  }
+  
+  .hero-content {
+    padding: 0 var(--space-sm);
+  }
+  
+  .hero-content h1 {
+    font-size: var(--text-2xl);
+  }
+  
+  .services,
+  .contact {
+    padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .contact-info {
+    padding: var(--space-md);
+  }
+  
+  .reservation-container {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .progress-indicator {
+    padding: 0;
+  }
+  
+  .progress-step {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .calendar-day {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .hours-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   }
 }
