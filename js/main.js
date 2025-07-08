@@ -4,7 +4,9 @@ import { serviceImages, getServiceImageWithFallback } from './service-images.js'
 // Initialize the page
 document.addEventListener('DOMContentLoaded', async () => {
     await loadServices();
+    await loadServicesInNewSection(); // Load services in the new visual section too
     setupSmoothScrolling();
+    setupAnimations();
 });
 
 // Load services from database
@@ -28,6 +30,50 @@ async function loadServices() {
     // FORCE STATIC SERVICES: Use centralized image system directly
     console.log('🎯 FORZANDO servicios estáticos con sistema centralizado para garantizar sincronización');
     await loadStaticServices(servicesGrid);
+}
+
+// Load services in the new visual section
+async function loadServicesInNewSection() {
+    console.log('🎨 Loading services in new visual section...');
+    
+    try {
+        // Try to get services from Supabase
+        const services = await db.getServices();
+        
+        if (services && services.length > 0) {
+            updateServiceItemsWithRealData(services);
+        } else {
+            console.log('📋 Using static service descriptions');
+        }
+    } catch (error) {
+        console.error('❌ Error loading services for new section:', error);
+        console.log('📋 Using default static descriptions');
+    }
+}
+
+// Update service items with real data from Supabase
+function updateServiceItemsWithRealData(services) {
+    const serviceItems = document.querySelectorAll('.service-item');
+    
+    // Map service names to grid items (adjust as needed)
+    const serviceMapping = {
+        'Corte': services.find(s => s.name.toLowerCase().includes('corte de pelo')),
+        'Corte + Barba': services.find(s => s.name.toLowerCase().includes('pelo y barba')),
+        'Barba': services.find(s => s.name.toLowerCase().includes('corte de barba')),
+        'Cejas': services.find(s => s.name.toLowerCase().includes('cejas')) || { description: 'Cejas limpias, naturales y con forma. Un pequeño detalle que resulta muy vistoso a la expresión.' },
+        'Pomadas': { description: 'Productos premium para el cuidado del cabello. Textura, fijación para lograr el look deseado.' },
+        'Corte y Color': services.find(s => s.name.toLowerCase().includes('diseños')) || { description: 'Cambio total o mezcla sutil. Coordinando técnica y estilo con el tono que mejor te sienta.' }
+    };
+    
+    serviceItems.forEach(item => {
+        const title = item.querySelector('h3').textContent;
+        const serviceData = serviceMapping[title];
+        
+        if (serviceData && serviceData.description) {
+            const description = item.querySelector('p');
+            description.textContent = serviceData.description;
+        }
+    });
 }
 
 // Render services function
@@ -183,6 +229,30 @@ function setupSmoothScrolling() {
                 });
             }
         });
+    });
+}
+
+// Setup animations
+function setupAnimations() {
+    // Animate service items on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe service items
+    const serviceItems = document.querySelectorAll('.service-item, .service-card');
+    serviceItems.forEach(item => {
+        observer.observe(item);
     });
 }
 

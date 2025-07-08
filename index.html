@@ -3,46 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbería Central - Donde el estilo cobra vida</title>
+    <title>Barbería Central - Un espacio donde el corte es un ritual</title>
     <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20250706-button-fix">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=20250708-polemica-design">
 </head>
 <body>
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" id="scrollProgress"></div>
     
-    <!-- Header -->
+    <!-- Header with Logo Centered -->
     <header class="header">
-        <div class="nav-container">
-            <div class="logo">BARBERÍA CENTRAL</div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="reserva.html">Reserva tu Turno</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
+        <div class="header-container">
+            <!-- Navigation Menu -->
+            <nav class="nav-top">
+                <div class="nav-left">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#servicios">Servicios</a>
+                </div>
+                
+                <!-- Centered Logo -->
+                <div class="logo-container">
+                    <div class="logo-symbol">B</div>
+                    <div class="logo-text">
+                        <span class="logo-main">BARBERÍA</span>
+                        <span class="logo-sub">CENTRAL</span>
+                    </div>
+                </div>
+                
+                <div class="nav-right">
+                    <a href="reserva.html">Reserva tu Turno</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
             </nav>
+            
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <!-- Reserve Button -->
+            <div class="header-cta">
+                <a href="reserva.html" class="btn-reserve">Hace tu Reserva</a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>BARBERÍA CENTRAL</h1>
-            <p>Donde el estilo cobra vida</p>
-            <a href="reserva.html" class="cta-button">Reservar Turno Ahora</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line-1">UN ESPACIO DONDE</span>
+                    <span class="title-line-2">EL CORTE ES UN</span>
+                    <span class="title-line-3">RITUAL</span>
+                </h1>
+                <p class="hero-description">
+                    En Barbería Central no solo hacemos cortes, creamos estilo. Desde 2020 ofrecemos una experiencia personalizada para el hombre moderno, en un ambiente relajado, masculino y con mucha personalidad. Nuestra misión es que cada visita sea un momento de disfrute, atención y renovación.
+                </p>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=800&fit=crop&crop=center" alt="Barbero trabajando" class="hero-img">
+            </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- What We Do Best Section -->
+    <section class="what-we-do">
+        <div class="container">
+            <h2 class="section-title">LO QUE MEJOR SABEMOS HACER</h2>
+            
+            <div class="services-grid-new">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Corte</h3>
+                    <p>Cortes clásicos o modernos, con técnica y precisión. Adaptamos cada estilo a tu personalidad.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Corte + Barba</h3>
+                    <p>Cortes clásicos o modernos, con técnica y precisión. Adaptamos cada estilo a tu personalidad.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-razor"></i>
+                    </div>
+                    <h3>Barba</h3>
+                    <p>Afeitado a navaja o diseño moderno. Siempre con cuidado profesional y productos premium.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-eye-dropper"></i>
+                    </div>
+                    <h3>Cejas</h3>
+                    <p>Cejas limpias, naturales y con forma. Un pequeño detalle que resulta muy vistoso a la expresión.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Pomadas</h3>
+                    <p>Productos premium para el cuidado del cabello. Textura, fijación para lograr el look deseado.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Corte y Color</h3>
+                    <p>Cambio total o mezcla sutil. Coordinando técnica y estilo con el tono que mejor te sienta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Original) -->
     <section id="servicios" class="services">
         <h2>Nuestros Servicios</h2>
         <div class="services-grid" id="servicesGrid">
             <!-- Services will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=500&h=600&fit=crop&crop=center" alt="Barbero trabajando" class="about-img">
+            </div>
+            <div class="about-content">
+                <h2>¿QUERÉS TU TURNO?<br>ESTAMOS ACÁ PARA VOS</h2>
+                <div class="schedule-info">
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes: 10:00 a 20:00</p>
+                    <p>Sábados: 10:00 a 18:00</p>
+                </div>
+                <div class="location-info">
+                    <p>Av. Francisco Beiró 1772<br>Devoto, C.A.B.A</p>
+                </div>
+                <a href="reserva.html" class="btn-reserve-section">HACE TU RESERVA</a>
+            </div>
         </div>
     </section>
 
