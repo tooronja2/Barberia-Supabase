@@ -1302,7 +1302,7 @@ body::before {
   box-shadow: var(--shadow-medium);
 }
 
-/* Mobile optimized step container */
+/* Mobile optimized step container - optimized for 2-column service grid */
 @media (max-width: 768px) {
   .step-container {
     padding: 1.5rem;
@@ -1315,6 +1315,12 @@ body::before {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  
+  /* Ensure service grid container has proper spacing */
+  .step-container .service-grid {
+    margin-top: 1rem;
+    padding: 0;
   }
 }
 
@@ -1351,10 +1357,10 @@ body::before {
   margin-bottom: var(--space-xl);
 }
 
-/* Mobile optimized service grid */
+/* Mobile optimized service grid - 2 columns like homepage */
 @media (max-width: 768px) {
   .service-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-bottom: 1.5rem;
     width: 100%;
@@ -1373,17 +1379,63 @@ body::before {
   text-align: center;
 }
 
-/* Mobile optimized service option */
+/* Mobile optimized service option - 2 columns like homepage */
 @media (max-width: 768px) {
   .service-option {
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    aspect-ratio: 1;
+    min-height: auto;
+    box-sizing: border-box;
+  }
+  
+  .service-option h3 {
+    font-size: clamp(0.875rem, 3.5vw, 1rem);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+  
+  .service-option p {
+    font-size: clamp(0.75rem, 3vw, 0.875rem);
+    line-height: 1.3;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .service-option .service-price {
+    font-size: clamp(0.875rem, 3.5vw, 1rem);
+    font-weight: 600;
+    color: var(--luxury-gold);
+    text-align: center;
+  }
+  
+  .service-option .service-duration {
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    color: var(--text-grey);
+    text-align: center;
+    margin-top: 0.25rem;
+  }
+  
+  /* Ensure hover and selected states work properly in 2-column layout */
+  .service-option:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .service-option.selected {
+    border-color: var(--luxury-gold);
+    background: var(--gold-accent);
+  }
+  
+  .service-option.selected .service-price {
+    color: var(--luxury-gold);
   }
 }
 
