@@ -1410,6 +1410,41 @@ html, body {
     padding: var(--space-xs) var(--space-sm);
   }
   
+  /* Logo optimizations */
+  .logo-container {
+    margin: 0;
+  }
+  
+  .logo-symbol {
+    width: 40px;
+    height: 40px;
+    font-size: var(--text-xl);
+  }
+  
+  .logo-text .logo-main {
+    font-size: var(--text-base);
+    letter-spacing: 1px;
+  }
+  
+  .logo-text .logo-sub {
+    font-size: var(--text-xs);
+    letter-spacing: 1px;
+  }
+  
+  /* Social icons mobile */
+  .social-icons {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-sm);
+    gap: var(--space-xs);
+  }
+  
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: var(--text-sm);
+  }
+  
   /* Hero section mobile */
   .hero {
     padding: var(--space-xl) 0 var(--space-lg);
@@ -1838,5 +1873,287 @@ html, body {
   .loading-container-reservation .loading-spinner {
     width: 25px;
     height: 25px;
+  }
+}
+
+/* ===== MOBILE HEADER IMPROVEMENTS ===== */
+@media (max-width: 768px) {
+  /* Logo optimizations */
+  .logo-container {
+    margin: 0;
+  }
+  
+  .logo-symbol {
+    width: 40px;
+    height: 40px;
+    font-size: var(--text-xl);
+  }
+  
+  .logo-text .logo-main {
+    font-size: var(--text-base);
+    letter-spacing: 1px;
+  }
+  
+  .logo-text .logo-sub {
+    font-size: var(--text-xs);
+    letter-spacing: 1px;
+  }
+  
+  /* Social icons mobile */
+  .social-icons {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-sm);
+    gap: var(--space-xs);
+  }
+  
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: var(--text-sm);
+  }
+  
+  /* Better hero spacing */
+  .hero-content {
+    margin-top: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-symbol {
+    width: 35px;
+    height: 35px;
+    font-size: var(--text-lg);
+  }
+  
+  .logo-text .logo-main {
+    font-size: var(--text-sm);
+  }
+  
+  .logo-text .logo-sub {
+    font-size: 10px;
+  }
+  
+  .social-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+  }
+}
+
+/* ===== ENHANCED SERVICE CARDS FOR MOBILE ===== */
+@media (max-width: 768px) {
+  .service-card {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .service-card .service-icon {
+    margin: 0 auto var(--space-xs);
+    flex-shrink: 0;
+  }
+  
+  .service-card h3 {
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .service-card p {
+    text-align: center;
+    line-height: 1.3;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .service-card .service-price {
+    text-align: center;
+    margin-top: var(--space-xs);
+    font-weight: 600;
+    color: var(--luxury-gold);
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    min-height: 160px;
+  }
+  
+  .service-card .service-icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* ===== HERO SECTION MOBILE OPTIMIZATION ===== */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+    padding: var(--space-md) 0;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+  }
+  
+  .hero-content h1 {
+    margin-bottom: var(--space-sm);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+  
+  .hero-content p {
+    margin-bottom: var(--space-md);
+    max-width: 100%;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 50vh;
+    padding: var(--space-sm) 0;
+  }
+  
+  .hero-content h1 {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .hero-content p {
+    margin-bottom: var(--space-sm);
+  }
+}
+
+/* ===== FOOTER MOBILE IMPROVEMENTS ===== */
+@media (max-width: 768px) {
+  .footer p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
+    line-height: 1.4;
+  }
+  
+  .management-link {
+    font-size: var(--text-sm);
+    padding: var(--space-xs) var(--space-sm);
+    margin-top: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer p {
+    font-size: 12px;
+  }
+  
+  .management-link {
+    font-size: 12px;
+    padding: var(--space-xs);
+  }
+}
+
+/* ===== RESERVATIONS PAGE MOBILE ENHANCEMENTS ===== */
+@media (max-width: 768px) {
+  /* Better service/barber option layout */
+  .service-option {
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .barber-option {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .service-option img,
+  .barber-option img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .service-option h3,
+  .barber-option h3 {
+    line-height: 1.2;
+  }
+  
+  .service-option p,
+  .barber-option p {
+    line-height: 1.3;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Better calendar navigation */
+  .calendar-nav {
+    gap: var(--space-xs);
+  }
+  
+  .calendar-nav button {
+    width: 35px;
+    height: 35px;
+    font-size: var(--text-base);
+  }
+  
+  /* Improved form layout */
+  .customer-form {
+    padding: var(--space-sm);
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  /* Better confirmation layout */
+  .selected-info {
+    padding: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+  
+  .selected-info h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .selected-info p {
+    margin-bottom: var(--space-xs);
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  }
+  
+  .selected-info p:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-option,
+  .barber-option {
+    min-height: 120px;
+  }
+  
+  .service-option img,
+  .barber-option img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .calendar-nav button {
+    width: 30px;
+    height: 30px;
+    font-size: var(--text-sm);
   }
 }
