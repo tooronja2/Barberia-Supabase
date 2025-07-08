@@ -142,6 +142,39 @@ body {
   input, textarea, select {
     font-size: 16px;
   }
+  
+  /* Global centering for all major sections */
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Ensure all main content areas are centered */
+  .hero, .what-we-do, .about-section, .contact, .reservation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Center all grid and flex containers */
+  .services-grid-new, .service-grid, .barber-grid, .contact-container, .about-container, .hero-container {
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Fix any remaining layout issues */
+  * {
+    text-align: inherit;
+  }
+  
+  .service-item, .service-option, .barber-option, .contact-info, .about-content, .hero-content {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 /* Sophisticated background texture */
@@ -372,6 +405,8 @@ body::before {
     padding: 0 1rem;
     min-height: auto;
     text-align: center;
+    justify-items: center;
+    align-items: center;
   }
 }
 
@@ -384,6 +419,13 @@ body::before {
   .hero-content {
     padding-right: 0;
     order: 2;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -395,10 +437,16 @@ body::before {
   color: var(--pure-white);
 }
 
-/* Mobile optimized hero title - más compacto */
+/* Mobile optimized hero title - properly centered */
 @media (max-width: 768px) {
   .hero-title {
     margin-bottom: 1.5rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -420,6 +468,8 @@ body::before {
     line-height: 1.1;
     letter-spacing: 1px;
     margin-bottom: 0.25rem;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -452,6 +502,8 @@ body::before {
     margin: 0 auto;
     font-size: clamp(0.875rem, 3.5vw, 1rem);
     padding: 0 1rem;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -464,6 +516,11 @@ body::before {
   .hero-image {
     order: 1;
     margin-bottom: 1rem;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -511,6 +568,11 @@ body::before {
     max-width: 100%;
     margin: 0 auto;
     padding: 0 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -532,6 +594,9 @@ body::before {
     margin-bottom: 2rem;
     line-height: 1.2;
     letter-spacing: 1px;
+    text-align: center;
+    width: 100%;
+    display: block;
   }
 }
 
@@ -558,6 +623,9 @@ body::before {
     margin-left: auto;
     margin-right: auto;
     padding: 0;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
   }
 }
 
@@ -584,6 +652,8 @@ body::before {
     border-radius: 12px;
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
   }
 }
 
@@ -604,6 +674,11 @@ body::before {
   .service-icon {
     font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -621,6 +696,8 @@ body::before {
     font-size: clamp(0.875rem, 3.5vw, 1.125rem);
     margin-bottom: 0.75rem;
     line-height: 1.3;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -744,6 +821,10 @@ body::before {
     gap: 2rem;
     padding: 0 1rem;
     text-align: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -766,7 +847,8 @@ body::before {
     max-width: 100%;
     object-fit: cover;
     object-position: center;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem auto;
+    display: block;
   }
 }
 
@@ -783,6 +865,17 @@ body::before {
     font-size: clamp(1.5rem, 5vw, 2.25rem);
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .about-content {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -839,6 +932,8 @@ body::before {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 
@@ -877,6 +972,25 @@ body::before {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 0 1rem;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .contact-info {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-map {
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -961,10 +1075,32 @@ body::before {
   border-top: 1px solid rgba(212, 175, 55, 0.1);
 }
 
+/* Mobile optimized footer */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .footer p {
   color: var(--text-grey);
   font-size: var(--text-sm);
   margin-bottom: var(--space-sm);
+}
+
+/* Mobile optimized footer text */
+@media (max-width: 768px) {
+  .footer p {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
 /* ===== MANAGEMENT LINK - DISCRETE ===== */
@@ -1016,6 +1152,11 @@ body::before {
     max-width: 100%;
     padding: 2rem 1rem;
     overflow-x: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1028,6 +1169,12 @@ body::before {
 @media (max-width: 768px) {
   .reservation-header {
     margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1047,6 +1194,8 @@ body::before {
     margin-bottom: 1rem;
     letter-spacing: 1px;
     line-height: 1.2;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -1063,6 +1212,8 @@ body::before {
     font-size: 0.95rem;
     max-width: 100%;
     line-height: 1.4;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -1080,6 +1231,9 @@ body::before {
   .progress-indicator {
     margin-bottom: 2rem;
     gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -1156,6 +1310,11 @@ body::before {
     border-radius: 12px;
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1179,6 +1338,8 @@ body::before {
     font-size: clamp(1.125rem, 4vw, 1.5rem);
     margin-bottom: 1rem;
     line-height: 1.3;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -1197,6 +1358,8 @@ body::before {
     gap: 1rem;
     margin-bottom: 1.5rem;
     width: 100%;
+    justify-items: center;
+    align-items: center;
   }
 }
 
@@ -1215,6 +1378,12 @@ body::before {
   .service-option {
     padding: 1rem;
     border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1277,6 +1446,9 @@ body::before {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-bottom: 1.5rem;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
   }
 }
 
@@ -1295,6 +1467,12 @@ body::before {
   .barber-option {
     padding: 1rem;
     border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1819,12 +1997,15 @@ html, body {
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
   }
   
   .nav-top {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
     width: 100%;
+    align-items: center;
   }
   
   .nav-left,
@@ -1834,15 +2015,17 @@ html, body {
     gap: 1rem;
     width: 100%;
     flex-wrap: wrap;
+    order: 1;
+  }
+  
+  .logo-container {
+    order: 0;
+    margin-bottom: 1rem;
+    z-index: 10;
   }
   
   .nav-left {
     order: 1;
-  }
-  
-  .brand-logo {
-    order: 0;
-    margin-bottom: 0.25rem;
   }
   
   .nav-right {
@@ -1877,12 +2060,23 @@ html, body {
     letter-spacing: 0.5px;
   }
   
-  /* Social icons mobile - smaller */
+  /* Social icons mobile - properly positioned to avoid overlap */
   .social-icons {
-    position: absolute;
-    top: 0.25rem;
-    right: 0.5rem;
-    gap: 0.25rem;
+    position: relative;
+    top: auto;
+    right: auto;
+    gap: 0.5rem;
+    order: 3;
+    margin-top: 1rem;
+    justify-content: center;
+    display: flex;
+  }
+  
+  /* Header CTA button mobile positioning */
+  .header-cta {
+    order: 4;
+    margin-top: 1rem;
+    text-align: center;
   }
   
   .social-icon {
