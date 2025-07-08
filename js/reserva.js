@@ -325,7 +325,7 @@ async function loadBarbers() {
         if (barbersWithPhotos.length > 0) {
             console.log('✅ Usando barberos de base de datos con fotos');
             const barbersHTML = barbersWithPhotos.map((barber, index) => `
-                <div class="barber-card" data-barber-id="${barber.id}" style="animation-delay: ${index * 0.1}s">
+                <div class="barber-option" data-barber-id="${barber.id}" style="animation-delay: ${index * 0.1}s">
                     <div class="barber-photo">
                         <img src="${barber.photo_url}" alt="${barber.name}" loading="lazy">
                     </div>
@@ -337,7 +337,7 @@ async function loadBarbers() {
             barberSelection.innerHTML = barbersHTML;
             
             // Add click handlers
-            const barberCards = barberSelection.querySelectorAll('.barber-card');
+            const barberCards = barberSelection.querySelectorAll('.barber-option');
             barberCards.forEach(card => {
                 card.addEventListener('click', () => {
                     selectBarber(card, barbersWithPhotos);
@@ -393,7 +393,7 @@ function selectBarber(card, barbers) {
     console.log('👤 Seleccionando barbero...');
     
     // Remove previous selection
-    const allBarberCards = document.querySelectorAll('.barber-card');
+    const allBarberCards = document.querySelectorAll('.barber-option');
     console.log(`🔄 Limpiando ${allBarberCards.length} tarjetas de barbero`);
     allBarberCards.forEach(c => c.classList.remove('selected'));
     
@@ -731,23 +731,23 @@ async function loadAvailableHours() {
         
         // Render hour buttons
         hoursSelection.innerHTML = availabilityChecks.map(({ time, isAvailable }) => `
-            <button class="hour-button" ${!isAvailable ? 'disabled' : ''} data-time="${time}">
+            <div class="hour-option ${!isAvailable ? 'unavailable' : ''}" data-time="${time}">
                 ${time}
-            </button>
+            </div>
         `).join('');
         
         // Add click handlers for available hours
-        hoursSelection.querySelectorAll('.hour-button:not([disabled])').forEach(button => {
+        hoursSelection.querySelectorAll('.hour-option:not(.unavailable)').forEach(button => {
             button.addEventListener('click', () => selectTime(button));
         });
     } catch (error) {
         console.error('Error loading available hours:', error);
         // Fallback to basic hours (still filtered for same-day)
         hoursSelection.innerHTML = filteredHours.map(time => `
-            <button class="hour-button" data-time="${time}">${time}</button>
+            <div class="hour-option" data-time="${time}">${time}</div>
         `).join('');
         
-        hoursSelection.querySelectorAll('.hour-button').forEach(button => {
+        hoursSelection.querySelectorAll('.hour-option').forEach(button => {
             button.addEventListener('click', () => selectTime(button));
         });
     }
@@ -766,7 +766,7 @@ async function loadAvailableHours() {
 // Select time
 function selectTime(button) {
     // Remove previous selection
-    document.querySelectorAll('.hour-button').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('.hour-option').forEach(b => b.classList.remove('selected'));
     
     // Add selection to clicked button
     button.classList.add('selected');
@@ -1281,7 +1281,7 @@ function loadStaticBarbers() {
     console.log('📊 Barberos estáticos:', staticBarbers);
     
     const barbersHTML = staticBarbers.map(barber => `
-        <div class="barber-card" data-barber-id="${barber.id}">
+        <div class="barber-option" data-barber-id="${barber.id}">
             <div class="barber-photo">
                 ${barber.photo_url ? `<img src="${barber.photo_url}" alt="${barber.name}">` : barber.name.charAt(0)}
             </div>
@@ -1294,7 +1294,7 @@ function loadStaticBarbers() {
     barberSelection.innerHTML = barbersHTML;
     console.log('✅ HTML estático insertado');
     
-    const barberCards = barberSelection.querySelectorAll('.barber-card');
+    const barberCards = barberSelection.querySelectorAll('.barber-option');
     console.log('🎯 Tarjetas estáticas encontradas:', barberCards.length);
     
     barberCards.forEach((card, index) => {

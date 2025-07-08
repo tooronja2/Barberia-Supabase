@@ -877,6 +877,26 @@ body::before {
   background: var(--gold-accent);
 }
 
+.barber-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-md);
+  overflow: hidden;
+  border: 3px solid var(--dark-grey);
+  transition: var(--transition-base);
+}
+
+.barber-option.selected .barber-photo {
+  border-color: var(--luxury-gold);
+}
+
+.barber-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .barber-option h3 {
   font-family: var(--font-heading);
   color: var(--pure-white);
@@ -986,6 +1006,7 @@ body::before {
   transition: var(--transition-base);
   color: var(--light-text);
   font-weight: 500;
+  user-select: none;
 }
 
 .hour-option:hover {
