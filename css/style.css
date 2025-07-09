@@ -314,8 +314,9 @@ body::before {
 /* Social Icons & CTA */
 .social-icons {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50%;
+  right: 2rem; /* separa iconos del borde */
+  transform: translateY(-50%);
   display: flex;
   gap: var(--space-sm);
 }
@@ -2077,7 +2078,7 @@ html, body {
     letter-spacing: 0.5px;
   }
   
-  /* Social icons mobile - properly positioned to avoid overlap */
+  /* Social icons mobile - properly positioned to evitar overlap */
   .social-icons {
     position: relative;
     top: auto;
