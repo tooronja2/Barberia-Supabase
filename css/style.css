@@ -2407,3 +2407,34 @@ html, body {
     display: block;
   }
 }
+
+/* Reservation Details Styling */
+.reservation-details p {
+  margin-bottom: var(--space-sm);
+  line-height: 1.6;
+  color: var(--light-text);
+}
+
+.reservation-details p strong {
+  color: var(--pure-white);
+  margin-right: var(--space-sm);
+  display: inline-block;
+  min-width: 120px;
+}
+
+.reservation-details p span {
+  color: var(--luxury-gold);
+  font-weight: 500;
+}
+
+/* Mobile adjustments for reservation details */
+@media (max-width: 768px) {
+  .reservation-details p strong {
+    min-width: 100px;
+    margin-right: var(--space-xs);
+  }
+  
+  .reservation-details p {
+    font-size: var(--text-sm);
+  }
+}
