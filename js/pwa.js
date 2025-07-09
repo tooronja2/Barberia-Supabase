@@ -17,13 +17,16 @@ window.addEventListener('load', () => {
         }
     } else {
         console.log('📱 PWA Debug: App is running in browser mode');
-        // Force show button for testing (remove in production)
-        const installButton = document.getElementById('installButton');
-        if (installButton) {
-            console.log('🔍 PWA Debug: Install button found, showing for testing');
-            installButton.style.display = 'inline-flex';
-            installButton.textContent = '📱 Test Install';
-        }
+        
+        // Show install button for all users after a delay
+        setTimeout(() => {
+            const installButton = document.getElementById('installButton');
+            if (installButton) {
+                console.log('🔍 PWA Debug: Showing install button for all users');
+                installButton.style.display = 'inline-flex';
+                installButton.textContent = '📱 Instalar App';
+            }
+        }, 2000);
     }
 });
 
@@ -80,7 +83,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 console.log('❌ PWA Debug: No deferred prompt available');
-                alert('La aplicación no se puede instalar en este momento. Intenta desde Chrome/Edge en Android o Safari en iOS.');
+                
+                // Check browser and show appropriate message
+                const userAgent = navigator.userAgent.toLowerCase();
+                const isAndroid = userAgent.includes('android');
+                const isIOS = userAgent.includes('iphone') || userAgent.includes('ipad');
+                const isChrome = userAgent.includes('chrome');
+                const isEdge = userAgent.includes('edge');
+                const isSafari = userAgent.includes('safari') && !userAgent.includes('chrome');
+                
+                let message = 'Para instalar esta aplicación:\\n\\n';
+                
+                if (isAndroid) {
+                    if (isChrome) {
+                        message += '• Usa el menú de Chrome (⋮) > "Agregar a pantalla de inicio"';
+                    } else if (isEdge) {
+                        message += '• Usa el menú de Edge (⋯) > "Aplicaciones" > "Instalar esta aplicación"';
+                    } else {
+                        message += '• Abre esta página en Chrome o Edge\\n• Busca "Agregar a pantalla de inicio" en el menú';
+                    }
+                } else if (isIOS) {
+                    if (isSafari) {
+                        message += '• Toca el botón Compartir (□↗)\\n• Selecciona "Agregar a pantalla de inicio"';
+                    } else {
+                        message += '• Abre esta página en Safari\\n• Usa Compartir > "Agregar a pantalla de inicio"';
+                    }
+                } else {
+                    // Desktop
+                    if (isChrome || isEdge) {
+                        message += '• Busca el ícono de instalación en la barra de direcciones\\n• O usa el menú > "Instalar aplicación"';
+                    } else {
+                        message += '• Abre esta página en Chrome o Edge\\n• Busca la opción "Instalar aplicación"';
+                    }
+                }
+                
+                alert(message);
             }
         });
     } else {

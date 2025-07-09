@@ -4,7 +4,7 @@ console.log('🔍 PWA Debug Helper loaded');
 // Check PWA requirements
 function checkPWARequirements() {
     const results = {
-        https: location.protocol === 'https:' || location.hostname === 'localhost',
+        https: location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1',
         serviceWorker: 'serviceWorker' in navigator,
         manifest: !!document.querySelector('link[rel="manifest"]'),
         icons: false,

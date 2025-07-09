@@ -102,14 +102,15 @@
 }
 
 .form-group.remember-me input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   margin: 0;
   cursor: pointer;
   accent-color: var(--admin-accent);
   background-color: var(--admin-primary);
   border: 2px solid var(--admin-border);
   border-radius: 3px;
+  flex-shrink: 0;
 }
 
 .form-group.remember-me input[type="checkbox"]:checked {
@@ -737,5 +738,14 @@
   
   .stat-content h3 {
     font-size: 1.5rem;
+  }
+  
+  .form-group.remember-me input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .form-group.remember-me label {
+    font-size: 0.85rem;
   }
 }

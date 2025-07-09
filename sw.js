@@ -1,18 +1,19 @@
-const CACHE_NAME = 'barberia-admin-cache-v1';
+const CACHE_NAME = 'barberia-admin-cache-v2';
 const urlsToCache = [
-  '/',
-  '/admin-login.html',
-  '/admin-panel.html',
-  '/css/admin-style.css',
-  '/css/style.css',
-  '/js/admin-auth.js',
-  '/js/admin-panel.js',
-  '/js/supabase.js',
-  '/js/config.js',
-  '/js/pwa.js',
-  '/manifest.json',
-  '/assets/images/barber-icon-192.png',
-  '/assets/images/barber-icon-512.png'
+  './',
+  './admin-login.html',
+  './admin-panel.html',
+  './css/admin-style.css',
+  './css/style.css',
+  './js/admin-auth.js',
+  './js/admin-panel.js',
+  './js/supabase.js',
+  './js/config.js',
+  './js/pwa.js',
+  './js/pwa-debug.js',
+  './manifest.json',
+  './assets/images/barber-icon-192.png',
+  './assets/images/barber-icon-512.png'
 ];
 
 self.addEventListener('install', event => {
