@@ -1889,7 +1889,7 @@ body::before {
 }
 
 .no-times-available p {
-  font-size: var(--text-lg);
+  font-size:  var(--text-lg);
   color: var(--text-grey);
   margin: 0;
 }
@@ -2406,443 +2406,56 @@ html, body {
   }
 }
 
-@media (max-width: 480px) {
-  /* Extra small screens - maintain proportions */
-  .header-container {
-    padding: 0 var(--space-xs);
-    max-width: 100%;
+/* ===== PREVENCIÓN TOTAL DE SCROLL EN MÓVIL ===== */
+@media (max-width: 768px) {
+  /* CRÍTICO: Prevenir scroll en body y html */
+  html, body {
+    overflow: hidden; /* No scroll en toda la página */
+    height: 100vh;
+    position: fixed; /* Fijar la posición */
+    width: 100%;
   }
   
-  .hero-content {
-    padding: 0 var(--space-xs);
-    max-width: 100%;
-  }
-  
-  .hero-content h1 {
-    font-size: clamp(1.5rem, 4vw, 2rem); /* adjusted fluid scaling */
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .hero-content p {
-    font-size: 13px;
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-  }
-  
-  /* Services section mobile - Grid 2 columns square cards */
-  .services {
-    padding: var(--space-xl) var(--space-md); /* mt-12 vertical spacing */
-  }
-  
-  .services h2 {
-    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
-    line-height: 1.1; /* leading-tight */
-    margin-bottom: var(--space-lg); /* mt-12 equivalent */
-    max-width: 448px; /* max-w-md equivalent */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-  
-  .services-grid {
-    /* Styles handled by main mobile @media rules above */
-  }
-  
-  .service-card {
-    padding: 1.5rem; /* p-6 equivalent */
-    aspect-ratio: 1; /* aspect-square */
-    min-height: unset; /* remove fixed min-height */
-    height: auto;
+  /* CRÍTICO: Contenedor de reserva con scroll interno controlado */
+  .reservation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* Sin scroll externo */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
   }
   
-  .service-card h3 {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-xs);
-    line-height: 1.1; /* leading-tight */
+  /* Prevenir scroll en todos los contenedores de paso */
+  .step-container {
+    overflow: hidden !important;
+    position: relative;
+    touch-action: none; /* Prevenir gestos de scroll */
   }
   
-  .service-card p {
-    font-size: 12px;
-    margin-bottom: var(--space-sm);
-    line-height: 1.1; /* leading-tight */
+  /* Solo el customer form puede hacer scroll interno si es necesario */
+  .customer-form {
+    touch-action: pan-y; /* Solo scroll vertical en el form */
   }
   
-  .service-card .service-price {
-    font-size: var(--text-base);
-    line-height: 1.1; /* leading-tight */
+  /* Prevenir cualquier scroll horizontal */
+  * {
+    overflow-x: hidden !important;
   }
-  
-  /* Contact section mobile */
-  .contact {
-    padding: var(--space-xl) var(--space-md); /* mt-12 vertical spacing */
-  }
-  
-  .contact h2 {
-    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
-    line-height: 1.1; /* leading-tight */
-    margin-bottom: var(--space-lg); /* mt-12 equivalent */
-    max-width: 448px; /* max-w-md equivalent */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-  
-  .contact-container {
-    gap: var(--space-sm); /* reduced gaps */
-    max-width: 448px; /* max-w-md equivalent */
-    margin: 0 auto;
-    padding: 0 var(--space-md); /* px-4 equivalent */
-  }
-  
-  .contact-info {
-    padding: 1.5rem; /* p-6 equivalent */
+}
+
+/* Restaurar scroll normal en desktop */
+@media (min-width: 769px) {
+  html, body {
+    overflow: auto;
     height: auto;
-  }
-  
-  .contact-info h2 {
-    font-size: var(--text-lg);
-    line-height: 1.1; /* leading-tight */
-    margin-bottom: var(--space-md);
-  }
-  
-  .contact-info p {
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-sm);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .contact-map h3 {
-    font-size: var(--text-lg);
-    line-height: 1.1; /* leading-tight */
-    margin-bottom: var(--space-md);
-  }
-  
-  .contact-map p {
-    font-size: var(--text-sm);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .contact-buttons {
-    flex-direction: column;
-    gap: var(--space-sm); /* reduced gaps */
-  }
-  
-  .contact-button {
-    text-align: center;
-    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
-    font-size: var(--text-sm);
-  }
-  
-  /* Footer mobile */
-  .footer {
-    padding: var(--space-lg) var(--space-md); /* mt-12 vertical spacing */
-    max-width: 448px; /* max-w-md equivalent */
-    margin: 0 auto;
-  }
-  
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-sm); /* reduced gaps */
-  }
-  
-  .footer-content p {
-    font-size: var(--text-sm);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  /* Reservations mobile - optimized proportions */
-  .progress-indicator {
-    gap: var(--space-sm); /* space-x-4 equivalent */
-    padding: 0 var(--space-md); /* px-4 equivalent */
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: var(--space-lg); /* mt-12 equivalent */
-  }
-  
-  .progress-step {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
+    position: static;
   }
   
   .reservation-container {
-    padding: var(--space-lg) var(--space-md); /* mt-12 vertical, px-4 horizontal */
-    max-width: 448px; /* max-w-md equivalent */
-    margin: 0 auto;
-  }
-  
-  .step-title {
-    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
-    line-height: 1.1; /* leading-tight */
-    margin-bottom: var(--space-lg); /* mt-12 equivalent */
-  }
-  
-  .service-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-sm); /* reduced gaps */
-  }
-  
-  .barber-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-sm); /* reduced gaps */
-  }
-  
-  .service-option,
-  .barber-option {
-    padding: 1.5rem; /* p-6 equivalent */
-    aspect-ratio: 1; /* aspect-square */
-    min-height: unset; /* remove fixed min-height */
-    height: auto;
-  }
-  
-  .service-option h3,
-  .barber-option h3 {
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-xs);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .service-option p,
-  .barber-option p {
-    font-size: 10px;
-    margin-bottom: var(--space-xs);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .service-price {
-    font-size: var(--text-base);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .service-duration {
-    font-size: 11px !important;
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .barber-photo {
-    width: 50px;
-    height: 50px;
-    margin-bottom: var(--space-xs);
-  }
-  
-  .step-navigation {
-    flex-direction: column;
-    gap: var(--space-sm); /* reduced gaps */
-    margin-top: var(--space-lg); /* mt-12 equivalent */
-  }
-  
-  .step-button {
-    width: 100%;
-    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
-    font-size: var(--text-sm);
-  }
-  
-  .calendar-container {
-    padding: var(--space-sm);
-    margin: 0;
-  }
-  
-  .calendar-header {
-    margin-bottom: var(--space-sm);
-  }
-  
-  .calendar-header h3 {
-    font-size: var(--text-base);
-  }
-  
-  .calendar-table {
-    font-size: 12px;
-  }
-  
-  .calendar-day {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
-  }
-  
-  .hours-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xs);
-  }
-  
-  .hour-option {
-    padding: var(--space-xs);
-    font-size: 10px;
-  }
-}
-
-/* ===== AJUSTES ESPECÍFICOS PARA EVITAR SCROLL EN MÓVIL ===== */
-@media (max-width: 768px) {
-  /* Contenedor principal sin overflow */
-  .step-container {
-    overflow: hidden; /* Evitar scroll horizontal */
-    max-width: 100vw;
-  }
-  
-  /* Service grid mejorado - Layout tipo lista */
-  .service-grid {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.5rem;
-  }
-  
-  .service-option {
-    width: 100%;
-    box-sizing: border-box;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    cursor: pointer;
-    border: 2px solid transparent;
-  }
-  
-  .service-option:hover {
-    transform: translateY(-2px);
-    background-color: rgba(212, 175, 55, 0.1);
-  }
-  
-  .service-option.selected {
-    border-color: var(--luxury-gold);
-    background-color: rgba(212, 175, 55, 0.15);
-  }
-  
-  .service-option img {
-    object-fit: cover;
-    background-color: var(--dark-grey);
-  }
-  
-  /* Barber grid mejorado - Layout tipo lista */
-  .barber-grid {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.5rem;
-  }
-  
-  .barber-option {
-    width: 100%;
-    box-sizing: border-box;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    cursor: pointer;
-    border: 2px solid transparent;
-  }
-  
-  .barber-option:hover {
-    transform: translateY(-2px);
-    background-color: rgba(212, 175, 55, 0.1);
-  }
-  
-  .barber-option.selected {
-    border-color: var(--luxury-gold);
-    background-color: rgba(212, 175, 55, 0.15);
-  }
-  
-  .barber-photo img {
-    object-fit: cover;
-    background-color: var(--dark-grey);
-  }
-  
-  /* Step container improvements */
-  .step-container {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Progress indicator más compacto */
-  .progress-indicator {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0.5rem;
-    gap: 0.25rem;
-  }
-  
-  /* Navigation buttons mejorados */
-  .step-navigation {
-    padding: 0.75rem;
-    background: rgba(30, 30, 30, 0.5);
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-  }
-  
-  .step-button {
-    min-height: 44px; /* Touch target size */
-    font-weight: 600;
-    border-radius: 0.375rem;
-  }
-  
-  /* Form improvements */
-  .customer-form {
-    width: 100%;
-    max-width: none;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  /* Calendar container */
-  .calendar-container {
-    max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Hours grid improvements */
-  .hours-grid {
-    padding: 0.5rem;
-    max-height: 40vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .hour-option {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-  }
-  
-  .hour-option:hover {
-    background-color: rgba(212, 175, 55, 0.1);
-  }
-  
-  .hour-option.selected {
-    background-color: var(--luxury-gold);
-    color: var(--primary-black);
-  }
-}
-
-/* Ajustes específicos para pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .service-option,
-  .barber-option {
-    padding: 0.5rem;
-    gap: 0.5rem;
-  }
-  
-  .service-option img,
-  .barber-photo img {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .step-container {
-    padding: 0.5rem;
-  }
-  
-  .hours-grid {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
-  
-  .hour-option {
-    padding: 0.75rem 0.5rem;
+    position: static;
+    overflow: visible;
   }
 }

@@ -991,8 +991,7 @@ function goToStep(step) {
     reservationState.currentStep = step;
     console.log(`📊 Estado actualizado - paso actual: ${step}`);
     
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // NO SCROLL - mantener posición fija en móvil
     console.log(`✅ Navegación al paso ${step} completada`);
 }
 
