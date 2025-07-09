@@ -172,11 +172,11 @@ async function loadServices() {
                 return `
                     <div class="service-option" data-service-id="${service.id}" data-duration="${duration}" style="animation-delay: ${index * 0.1}s">
                         <img src="${service.image_url}" alt="${service.name}" class="service-image" loading="lazy">
-                        <h3>${service.name}</h3>
-                        <p>${service.description}</p>
-                        <div class="service-price">$${service.price.toLocaleString()}</div>
-                        <div class="service-duration" style="font-size: 0.9rem; color: #b8b8b8; margin-top: 0.5rem;">
-                            ⏱️ ${duration} minutos
+                        <div class="service-content">
+                            <h3>${service.name}</h3>
+                            <p>${service.description}</p>
+                            <div class="service-price">$${service.price.toLocaleString()}</div>
+                            <div class="service-duration">⏱️ ${duration} minutos</div>
                         </div>
                     </div>
                 `;
@@ -203,11 +203,11 @@ async function loadServices() {
                 return `
                     <div class="service-option" data-service-id="${service.id}" data-duration="${duration}" style="animation-delay: ${index * 0.1}s">
                         <img src="${service.image_url}" alt="${service.name}" class="service-image" loading="lazy">
-                        <h3>${service.name}</h3>
-                        <p>${service.description}</p>
-                        <div class="service-price">$${service.price.toLocaleString()}</div>
-                        <div class="service-duration" style="font-size: 0.9rem; color: #b8b8b8; margin-top: 0.5rem;">
-                            ⏱️ ${duration} minutos
+                        <div class="service-content">
+                            <h3>${service.name}</h3>
+                            <p>${service.description}</p>
+                            <div class="service-price">$${service.price.toLocaleString()}</div>
+                            <div class="service-duration">⏱️ ${duration} minutos</div>
                         </div>
                     </div>
                 `;
@@ -329,8 +329,10 @@ async function loadBarbers() {
                     <div class="barber-photo">
                         <img src="${barber.photo_url}" alt="${barber.name}" loading="lazy">
                     </div>
-                    <h3>${barber.name}</h3>
-                    <p>${barber.specialty}</p>
+                    <div class="barber-content">
+                        <h3>${barber.name}</h3>
+                        <p>${barber.specialty}</p>
+                    </div>
                 </div>
             `).join('');
             
@@ -1296,8 +1298,10 @@ function loadStaticBarbers() {
             <div class="barber-photo">
                 ${barber.photo_url ? `<img src="${barber.photo_url}" alt="${barber.name}">` : barber.name.charAt(0)}
             </div>
-            <h3>${barber.name}</h3>
-            <p>${barber.specialty}</p>
+            <div class="barber-content">
+                <h3>${barber.name}</h3>
+                <p>${barber.specialty}</p>
+            </div>
         </div>
     `).join('');
     

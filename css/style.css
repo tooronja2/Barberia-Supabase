@@ -1690,7 +1690,6 @@ body::before {
   background: var(--luxury-gold);
   color: var(--primary-black);
   border-color: var(--luxury-gold);
-  font-weight: 600;
 }
 
 .hour-option.unavailable {
@@ -2301,10 +2300,6 @@ html, body {
     font-size: 12px;
   }
   
-  .progress-step::after {
-    width: var(--space-sm);
-  }
-  
   .reservation-container {
     padding: var(--space-lg) var(--space-md); /* mt-12 vertical, px-4 horizontal */
     max-width: 448px; /* max-w-md equivalent */
@@ -2429,158 +2424,35 @@ html, body {
   }
   
   .hero-content p {
-    font-size: var(--text-sm);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .services,
-  .contact {
-    padding: var(--space-md) var(--space-xs); /* mt-12 equivalent */
-  }
-  
-  .services-grid {
-    grid-template-columns: 1fr; /* single column for very small screens */
-    gap: var(--space-xs);
-    padding: 0 var(--space-xs);
-  }
-  
-  .service-card {
-    padding: var(--space-md); /* smaller p-6 equivalent */
-    aspect-ratio: unset; /* remove aspect-square for single column */
-    height: auto;
-  }
-  
-  .service-card h3 {
-    font-size: var(--text-sm);
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .service-card p {
-    font-size: 12px;
-    line-height: 1.1; /* leading-tight */
-  }
-  
-  .contact-container {
-    gap: var(--space-xs);
-    padding: 0 var(--space-xs);
-  }
-  
-  .contact-info {
-    padding: var(--space-md); /* smaller p-6 equivalent */
-  }
-  
-  .reservation-container {
-    padding: var(--space-md) var(--space-xs); /* mt-12 vertical */
-    max-width: 100%;
-  }
-  
-  .progress-indicator {
-    padding: 0;
-    gap: var(--space-xs);
-  }
-  
-  .progress-step {
-    width: 25px;
-    height: 25px;
-    font-size: 10px;
-  }
-}
-
-/* ===== ULTRA COMPACT MOBILE OPTIMIZATIONS FOR 9:16 ASPECT RATIO ===== */
-@media (max-width: 768px) {
-  /* Global section optimizations - DRÁSTICA REDUCCIÓN para 9:16 */
-  .hero {
-    padding: 0.5rem 0; /* Mínimo padding */
-    min-height: 25vh; /* Solo 25% del viewport */
-    margin-top: 0;
-  }
-  
-  .hero-content {
-    padding: 0 0.75rem;
-    max-width: 100%;
-    margin: 0;
-  }
-  
-  .hero-content h1 {
-    font-size: clamp(1.25rem, 5vw, 1.75rem); /* MUY reducido para 9:16 */
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-  }
-  
-  .hero-content p {
     font-size: 13px;
     line-height: 1.2;
     margin-bottom: 0.75rem;
   }
   
-  .btn-primary {
-    padding: 0.5rem 1rem;
-    font-size: 12px;
+  /* Services section mobile - Grid 2 columns square cards */
+  .services {
+    padding: var(--space-xl) var(--space-md); /* mt-12 vertical spacing */
   }
   
-  /* Header ultra compacto */
-  .header {
-    padding: 0.25rem 0;
+  .services h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
+    max-width: 448px; /* max-w-md equivalent */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   
-  .header-container {
-    padding: 0 0.5rem;
-  }
-  
-  .nav-top {
-    gap: 0.25rem;
-  }
-  
-  .nav-left a,
-  .nav-right a {
-    font-size: 10px;
-    padding: 0.125rem 0.375rem;
-  }
-  
-  .brand-logo img {
-    width: 35px;
-    height: 35px;
-  }
-  
-  /* Social icons MUY pequeños */
-  .social-icons {
-    top: 0.125rem;
-    right: 0.375rem;
-    gap: 0.125rem;
-  }
-  
-  .social-icon {
-    width: 18px;
-    height: 18px;
-    font-size: 9px;
-  }
-  
-  /* Secciones principales compactas */
-  .services,
-  .contact {
-    padding: 0.75rem 0.5rem; /* Drásticamente reducido */
-  }
-  
-  .section-title {
-    font-size: clamp(1.125rem, 4vw, 1.5rem); /* Muy compacto */
-    margin-bottom: 0.75rem;
-    line-height: 1.1;
-  }
-  
-  /* Grid de servicios ultra compacto para 2 columnas */
   .services-grid {
-    grid-template-columns: 1fr 1fr; /* Forzar 2 columnas */
-    gap: 0.5rem; /* Gap muy pequeño */
-    padding: 0 0.25rem;
-    max-width: 100%;
+    /* Styles handled by main mobile @media rules above */
   }
   
   .service-card {
-    padding: 0.75rem; /* Ultra compacto */
-    aspect-ratio: 1; /* Mantener cuadrado */
+    padding: 1.5rem; /* p-6 equivalent */
+    aspect-ratio: 1; /* aspect-square */
+    min-height: unset; /* remove fixed min-height */
     height: auto;
-    min-height: unset;
-    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2588,575 +2460,389 @@ html, body {
     text-align: center;
   }
   
-  .service-card .service-icon {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 0.25rem;
-    flex-shrink: 0;
-  }
-  
   .service-card h3 {
-    font-size: 11px;
-    line-height: 1.1;
-    margin-bottom: 0.25rem;
-    font-weight: 600;
+    font-size: var(--text-base);
+    margin-bottom: var(--space-xs);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-card p {
-    font-size: 9px;
-    line-height: 1.1;
-    margin: 0;
-    opacity: 0.8;
+    font-size: 12px;
+    margin-bottom: var(--space-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
-  /* Contacto compacto */
+  .service-card .service-price {
+    font-size: var(--text-base);
+    line-height: 1.1; /* leading-tight */
+  }
+  
+  /* Contact section mobile */
+  .contact {
+    padding: var(--space-xl) var(--space-md); /* mt-12 vertical spacing */
+  }
+  
+  .contact h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
+    max-width: 448px; /* max-w-md equivalent */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
   .contact-container {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding: 0 0.5rem;
+    gap: var(--space-sm); /* reduced gaps */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
+    padding: 0 var(--space-md); /* px-4 equivalent */
   }
   
   .contact-info {
-    padding: 0.75rem;
+    padding: 1.5rem; /* p-6 equivalent */
+    height: auto;
   }
   
-  .contact-info h3 {
-    font-size: 14px;
-    margin-bottom: 0.5rem;
+  .contact-info h2 {
+    font-size: var(--text-lg);
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-md);
   }
   
   .contact-info p {
-    font-size: 11px;
-    line-height: 1.2;
-    margin-bottom: 0.25rem;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
-  /* Footer compacto */
+  .contact-map h3 {
+    font-size: var(--text-lg);
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-md);
+  }
+  
+  .contact-map p {
+    font-size: var(--text-sm);
+    line-height: 1.1; /* leading-tight */
+  }
+  
+  .contact-buttons {
+    flex-direction: column;
+    gap: var(--space-sm); /* reduced gaps */
+  }
+  
+  .contact-button {
+    text-align: center;
+    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
+    font-size: var(--text-sm);
+  }
+  
+  /* Footer mobile */
   .footer {
-    padding: 0.5rem 0;
+    padding: var(--space-lg) var(--space-md); /* mt-12 vertical spacing */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
   }
   
-  .footer p {
-    font-size: 10px;
-    margin-bottom: 0.25rem;
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-sm); /* reduced gaps */
   }
   
-  .management-link {
-    font-size: 10px;
-    padding: 0.25rem 0.5rem;
-    margin-top: 0.25rem;
-  }
-}
-
-/* ===== MÓVILES MUY PEQUEÑOS - SINGLE COLUMN ===== */
-@media (max-width: 480px) {
-  /* Una sola columna para móviles muy pequeños */
-  .services-grid {
-    grid-template-columns: 1fr; /* Solo 1 columna */
-    gap: 0.375rem;
+  .footer-content p {
+    font-size: var(--text-sm);
+    line-height: 1.1; /* leading-tight */
   }
   
-  .service-card {
-    aspect-ratio: unset; /* Remover cuadrado en single column */
-    padding: 0.5rem;
-  }
-  
-  .service-card .service-icon {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .service-card h3 {
-    font-size: 10px;
-  }
-  
-  .service-card p {
-    font-size: 8px;
-  }
-  
-  .hero-content h1 {
-    font-size: clamp(1rem, 4vw, 1.375rem);
-  }
-  
-  .hero-content p {
-    font-size: 11px;
-  }
-  
-  .section-title {
-    font-size: clamp(1rem, 3.5vw, 1.25rem);
-  }
-}
-
-/* ===== RESERVAS PAGE ULTRA COMPACT ===== */
-@media (max-width: 768px) {
-  .reservation-container {
-    padding: 0.75rem 0.5rem;
-    max-width: 100%;
-  }
-  
+  /* Reservations mobile - optimized proportions */
   .progress-indicator {
-    gap: 0.375rem;
-    margin-bottom: 0.75rem;
-    padding: 0 0.25rem;
+    gap: var(--space-sm); /* space-x-4 equivalent */
+    padding: 0 var(--space-md); /* px-4 equivalent */
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
   }
   
   .progress-step {
-    width: 28px;
-    height: 28px;
-    font-size: 11px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .reservation-container {
+    padding: var(--space-lg) var(--space-md); /* mt-12 vertical, px-4 horizontal */
+    max-width: 448px; /* max-w-md equivalent */
+    margin: 0 auto;
   }
   
   .step-title {
-    font-size: 14px;
-    margin-bottom: 0.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem); /* text-4xl to text-5xl fluid scaling */
+    line-height: 1.1; /* leading-tight */
+    margin-bottom: var(--space-lg); /* mt-12 equivalent */
   }
   
-  /* Service/Barber grids compactos */
-  .service-grid,
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm); /* reduced gaps */
+  }
+  
   .barber-grid {
-    grid-template-columns: 1fr 1fr; /* 2 columnas */
-    gap: 0.5rem;
-    padding: 0 0.25rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm); /* reduced gaps */
   }
   
   .service-option,
   .barber-option {
-    padding: 0.5rem;
-    aspect-ratio: 1; /* Cuadrados */
-    min-height: unset;
+    padding: 1.5rem; /* p-6 equivalent */
+    aspect-ratio: 1; /* aspect-square */
+    min-height: unset; /* remove fixed min-height */
     height: auto;
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .service-option img,
-  .barber-option img {
-    width: 24px;
-    height: 24px;
-    border-radius: 0.25rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  .barber-photo {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
   }
   
   .service-option h3,
   .barber-option h3 {
-    font-size: 10px;
-    line-height: 1.1;
-    margin-bottom: 0.125rem;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
+    line-height: 1.1; /* leading-tight */
   }
   
   .service-option p,
   .barber-option p {
-    font-size: 8px;
-    line-height: 1.1;
-    margin: 0;
-    opacity: 0.8;
+    font-size: 10px;
+    margin-bottom: var(--space-xs);
+    line-height: 1.1; /* leading-tight */
   }
   
-  /* Calendar compacto */
+  .service-price {
+    font-size: var(--text-base);
+    line-height: 1.1; /* leading-tight */
+  }
+  
+  .service-duration {
+    font-size: 11px !important;
+    line-height: 1.1; /* leading-tight */
+  }
+  
+  .barber-photo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .step-navigation {
+    flex-direction: column;
+    gap: var(--space-sm); /* reduced gaps */
+    margin-top: var(--space-lg); /* mt-12 equivalent */
+  }
+  
+  .step-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
+    font-size: var(--text-sm);
+  }
+  
   .calendar-container {
-    padding: 0.5rem;
-    margin: 0.5rem 0;
+    padding: var(--space-sm);
+    margin: 0;
+  }
+  
+  .calendar-header {
+    margin-bottom: var(--space-sm);
   }
   
   .calendar-header h3 {
-    font-size: 12px;
-    margin-bottom: 0.375rem;
-  }
-  
-  .calendar-nav button {
-    width: 28px;
-    height: 28px;
-    font-size: 12px;
+    font-size: var(--text-base);
   }
   
   .calendar-table {
-    font-size: 9px;
+    font-size: 12px;
   }
   
   .calendar-day {
-    width: 24px;
-    height: 24px;
-    font-size: 9px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
   }
   
-  /* Hours grid compacto */
   .hours-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.25rem;
-    padding: 0.5rem 0.25rem;
+    gap: var(--space-xs);
   }
   
   .hour-option {
-    padding: 0.375rem 0.25rem;
-    font-size: 9px;
-    border-radius: 0.25rem;
+    padding: var(--space-xs);
+    font-size: 10px;
+  }
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA EVITAR SCROLL EN MÓVIL ===== */
+@media (max-width: 768px) {
+  /* Contenedor principal sin overflow */
+  .step-container {
+    overflow: hidden; /* Evitar scroll horizontal */
+    max-width: 100vw;
   }
   
-  /* Form compacto */
-  .customer-form {
-    gap: 0.5rem;
+  /* Service grid mejorado - Layout tipo lista */
+  .service-grid {
+    width: 100%;
+    box-sizing: border-box;
     padding: 0.5rem;
   }
   
-  .form-group label {
-    font-size: 11px;
-    margin-bottom: 0.25rem;
+  .service-option {
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .service-option:hover {
+    transform: translateY(-2px);
+    background-color: rgba(212, 175, 55, 0.1);
+  }
+  
+  .service-option.selected {
+    border-color: var(--luxury-gold);
+    background-color: rgba(212, 175, 55, 0.15);
+  }
+  
+  .service-option img {
+    object-fit: cover;
+    background-color: var(--dark-grey);
+  }
+  
+  /* Barber grid mejorado - Layout tipo lista */
+  .barber-grid {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+  }
+  
+  .barber-option {
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .barber-option:hover {
+    transform: translateY(-2px);
+    background-color: rgba(212, 175, 55, 0.1);
+  }
+  
+  .barber-option.selected {
+    border-color: var(--luxury-gold);
+    background-color: rgba(212, 175, 55, 0.15);
+  }
+  
+  .barber-photo img {
+    object-fit: cover;
+    background-color: var(--dark-grey);
+  }
+  
+  /* Step container improvements */
+  .step-container {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Progress indicator más compacto */
+  .progress-indicator {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem;
+    gap: 0.25rem;
+  }
+  
+  /* Navigation buttons mejorados */
+  .step-navigation {
+    padding: 0.75rem;
+    background: rgba(30, 30, 30, 0.5);
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .step-button {
+    min-height: 44px; /* Touch target size */
+    font-weight: 600;
+    border-radius: 0.375rem;
+  }
+  
+  /* Form improvements */
+  .customer-form {
+    width: 100%;
+    max-width: none;
   }
   
   .form-group input,
   .form-group textarea {
-    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Calendar container */
+  .calendar-container {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Hours grid improvements */
+  .hours-grid {
     padding: 0.5rem;
-    min-height: 36px;
+    max-height: 40vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
-  /* Step navigation compacto */
-  .step-navigation {
-    margin-top: 0.75rem;
-    gap: 0.5rem;
-    padding: 0 0.5rem;
+  .hour-option {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
   }
   
-  .step-button {
-    padding: 0.5rem 0.75rem;
-    font-size: 11px;
+  .hour-option:hover {
+    background-color: rgba(212, 175, 55, 0.1);
   }
   
-  /* Success message compacto */
-  .success-icon {
-    font-size: 2rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  .reservation-details {
-    padding: 0.5rem;
-  }
-  
-  .reservation-details h3 {
-    font-size: 13px;
-    margin-bottom: 0.375rem;
-  }
-  
-  .reservation-details p {
-    font-size: 10px;
-    margin-bottom: 0.25rem;
+  .hour-option.selected {
+    background-color: var(--luxury-gold);
+    color: var(--primary-black);
   }
 }
 
+/* Ajustes específicos para pantallas muy pequeñas */
 @media (max-width: 480px) {
-  /* Single column para reservas en móviles muy pequeños */
-  .service-grid,
-  .barber-grid {
-    grid-template-columns: 1fr;
-    gap: 0.375rem;
-  }
-  
   .service-option,
   .barber-option {
-    aspect-ratio: unset;
-    padding: 0.375rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .service-option img,
+  .barber-photo img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .step-container {
+    padding: 0.5rem;
   }
   
   .hours-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
   
-  .progress-step {
-    width: 24px;
-    height: 24px;
-    font-size: 10px;
-  }
-}
-
-/* ===== MOBILE HEADER IMPROVEMENTS ===== */
-@media (max-width: 768px) {
-  /* Logo optimizations */
-  .logo-container {
-    margin: 0;
-  }
-  
-  .logo-symbol {
-    width: 40px;
-    height: 40px;
-    font-size: var(--text-xl);
-  }
-  
-  .logo-text .logo-main {
-    font-size: var(--text-base);
-    letter-spacing: 1px;
-  }
-  
-  .logo-text .logo-sub {
-    font-size: var(--text-xs);
-    letter-spacing: 1px;
-  }
-  
-  /* Social icons mobile */
-  .social-icons {
-    position: absolute;
-    top: var(--space-xs);
-    right: var(--space-sm);
-    gap: var(--space-xs);
-  }
-  
-  .social-icon {
-    width: 30px;
-    height: 30px;
-    font-size: var(--text-sm);
-  }
-  
-  /* Better hero spacing */
-  .hero-content {
-    margin-top: var(--space-md);
-  }
-}
-
-@media (max-width: 480px) {
-  .logo-symbol {
-    width: 35px;
-    height: 35px;
-    font-size: var(--text-lg);
-  }
-  
-  .logo-text .logo-main {
-    font-size: var(--text-sm);
-  }
-  
-  .logo-text .logo-sub {
-    font-size: 10px;
-  }
-  
-  .social-icon {
-    width: 25px;
-    height: 25px;
-    font-size: 12px;
-  }
-}
-
-/* ===== ENHANCED SERVICE CARDS FOR MOBILE ===== */
-@media (max-width: 768px) {
-  .service-card {
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .service-card .service-icon {
-    margin: 0 auto var(--space-xs);
-    flex-shrink: 0;
-  }
-  
-  .service-card h3 {
-    text-align: center;
-    line-height: 1.2;
-    margin-bottom: var(--space-xs);
-  }
-  
-  .service-card p {
-    text-align: center;
-    line-height: 1.3;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .service-card .service-price {
-    text-align: center;
-    margin-top: var(--space-xs);
-    font-weight: 600;
-    color: var(--luxury-gold);
-  }
-}
-
-@media (max-width: 480px) {
-  .service-card {
-    min-height: 160px;
-  }
-  
-  .service-card .service-icon {
-    width: 25px;
-    height: 25px;
-  }
-}
-
-/* ===== HERO SECTION MOBILE OPTIMIZATION ===== */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 60vh;
-    padding: var(--space-md) 0;
-  }
-  
-  .hero-content {
-    max-width: 90%;
-  }
-  
-  .hero-content h1 {
-    margin-bottom: var(--space-sm);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-  }
-  
-  .hero-content p {
-    margin-bottom: var(--space-md);
-    max-width: 100%;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 50vh;
-    padding: var(--space-sm) 0;
-  }
-  
-  .hero-content h1 {
-    margin-bottom: var(--space-xs);
-  }
-  
-  .hero-content p {
-    margin-bottom: var(--space-sm);
-  }
-}
-
-/* ===== FOOTER MOBILE IMPROVEMENTS ===== */
-@media (max-width: 768px) {
-  .footer p {
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-xs);
-    line-height: 1.4;
-  }
-  
-  .management-link {
-    font-size: var(--text-sm);
-    padding: var(--space-xs) var(--space-sm);
-    margin-top: var(--space-sm);
-  }
-}
-
-@media (max-width: 480px) {
-  .footer p {
-    font-size: 12px;
-  }
-  
-  .management-link {
-    font-size: 12px;
-    padding: var(--space-xs);
-  }
-}
-
-/* ===== RESERVATIONS PAGE MOBILE ENHANCEMENTS ===== */
-@media (max-width: 768px) {
-  /* Better service/barber option layout */
-  .service-option {
-    min-height: 140px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-  }
-  
-  .barber-option {
-    min-height: 160px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-  }
-  
-  .service-option img,
-  .barber-option img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
-    margin-bottom: var(--space-xs);
-  }
-  
-  .service-option h3,
-  .barber-option h3 {
-    line-height: 1.2;
-  }
-  
-  .service-option p,
-  .barber-option p {
-    line-height: 1.3;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Better calendar navigation */
-  .calendar-nav {
-    gap: var(--space-xs);
-  }
-  
-  .calendar-nav button {
-    width: 35px;
-    height: 35px;
-    font-size: var(--text-base);
-  }
-  
-  /* Improved form layout */
-  .customer-form {
-    padding: var(--space-sm);
-  }
-  
-  .form-row {
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-  
-  /* Better confirmation layout */
-  .selected-info {
-    padding: var(--space-sm);
-    font-size: var(--text-sm);
-  }
-  
-  .selected-info h3 {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-sm);
-  }
-  
-  .selected-info p {
-    margin-bottom: var(--space-xs);
-    padding: var(--space-xs) 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-  }
-  
-  .selected-info p:last-child {
-    border-bottom: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .service-option,
-  .barber-option {
-    min-height: 120px;
-  }
-  
-  .service-option img,
-  .barber-option img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .calendar-nav button {
-    width: 30px;
-    height: 30px;
-    font-size: var(--text-sm);
+  .hour-option {
+    padding: 0.75rem 0.5rem;
   }
 }
