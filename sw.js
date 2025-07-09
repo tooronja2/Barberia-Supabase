@@ -1,4 +1,4 @@
-const CACHE_NAME = 'barberia-admin-cache-v2';
+const CACHE_NAME = 'barberia-admin-cache-v3';
 const urlsToCache = [
   './',
   './admin-login.html',
@@ -11,17 +11,26 @@ const urlsToCache = [
   './js/config.js',
   './js/pwa.js',
   './js/pwa-debug.js',
+  './js/pwa-diagnostics.js',
   './manifest.json',
   './assets/images/barber-icon-192.png',
   './assets/images/barber-icon-512.png'
 ];
 
 self.addEventListener('install', event => {
+  console.log('Service Worker installing...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
+        console.log('✅ SW: Cache opened:', CACHE_NAME);
         return cache.addAll(urlsToCache);
+      })
+      .then(() => {
+        console.log('✅ SW: All files cached successfully');
+        return self.skipWaiting();
+      })
+      .catch(error => {
+        console.error('❌ SW: Cache installation failed:', error);
       })
   );
 });
@@ -40,16 +49,22 @@ self.addEventListener('fetch', event => {
 });
 
 self.addEventListener('activate', event => {
+  console.log('Service Worker activating...');
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then(cacheNames => {
+      console.log('✅ SW: Cleaning old caches');
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
+            console.log('🗑️ SW: Deleting cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
       );
+    }).then(() => {
+      console.log('✅ SW: Activated successfully');
+      return self.clients.claim();
     })
   );
 });

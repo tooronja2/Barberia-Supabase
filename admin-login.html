@@ -54,17 +54,26 @@
     </div>
 
     <script>
-        // Registrar Service Worker
+        // Registrar Service Worker con mejor debugging
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('./sw.js')
                     .then(registration => {
-                        console.log('ServiceWorker registration successful');
+                        console.log('✅ ServiceWorker registration successful:', registration);
+                        console.log('   Scope:', registration.scope);
+                        console.log('   State:', registration.active?.state);
+                        
+                        // Listen for updates
+                        registration.addEventListener('updatefound', () => {
+                            console.log('🔄 ServiceWorker update found');
+                        });
                     })
                     .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
+                        console.error('❌ ServiceWorker registration failed:', err);
                     });
             });
+        } else {
+            console.log('❌ ServiceWorker not supported');
         }
     </script>
     <script type="module" src="js/admin-auth.js"></script>
