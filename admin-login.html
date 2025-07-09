@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Barbería Central</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d4af37">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Admin BC">
     <link rel="stylesheet" href="css/admin-style.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -28,6 +33,11 @@
                            placeholder="Ingresa tu contraseña">
                 </div>
                 
+                <div class="form-group remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Recordar mis datos</label>
+                </div>
+                
                 <button type="submit" class="login-button" id="loginButton">
                     <span class="button-text">Iniciar Sesión</span>
                     <div class="loading-spinner" style="display: none;"></div>
@@ -43,6 +53,20 @@
         </div>
     </div>
 
+    <script>
+        // Registrar Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
     <script type="module" src="js/admin-auth.js"></script>
 </body>
 </html>

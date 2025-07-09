@@ -94,6 +94,23 @@
   color: var(--admin-text-secondary);
 }
 
+.form-group.remember-me {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group.remember-me input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.form-group.remember-me label {
+  margin: 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
 .login-button {
   padding: 0.8rem 1.5rem;
   background: var(--admin-accent);
@@ -227,6 +244,25 @@
 
 .logout-button:hover {
   background: #c82333;
+}
+
+.install-button {
+  background: var(--admin-accent);
+  color: var(--admin-primary);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.install-button:hover {
+  background: #c19b26;
 }
 
 .admin-main {
@@ -632,6 +668,11 @@
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+  
+  .admin-user-info {
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .stats-grid {

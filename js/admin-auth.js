@@ -89,6 +89,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Check if we're on the login page
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
+    // Try auto-login first for PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      const autoLoginSuccess = await attemptAutoLogin();
+      if (autoLoginSuccess) {
+        window.location.href = 'admin-panel.html';
+        return;
+      }
+    }
     initializeLogin();
   }
   
@@ -113,12 +121,19 @@ function initializeLogin() {
   const loginForm = document.getElementById('loginForm');
   const loginButton = document.getElementById('loginButton');
   const errorMessage = document.getElementById('errorMessage');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const rememberCheckbox = document.getElementById('rememberMe');
+  
+  // Load saved credentials
+  loadSavedCredentials();
   
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    const rememberMe = rememberCheckbox.checked;
     
     // Show loading state
     loginButton.disabled = true;
@@ -128,6 +143,13 @@ function initializeLogin() {
     
     try {
       const { user, barber } = await adminAuth.loginBarber(email, password);
+      
+      // Save credentials if remember me is checked
+      if (rememberMe) {
+        saveCredentials(email, password, barber);
+      } else {
+        clearSavedCredentials();
+      }
       
       // Store barber data in session
       sessionStorage.setItem('currentBarber', JSON.stringify(barber));
@@ -174,6 +196,7 @@ async function initializeAdminPanel() {
       try {
         await adminAuth.logout();
         sessionStorage.removeItem('currentBarber');
+        clearSavedCredentials();
         window.location.href = 'admin-login.html';
       } catch (error) {
         console.error('Logout error:', error);
@@ -186,4 +209,95 @@ async function initializeAdminPanel() {
 export function getCurrentBarber() {
   const barberData = sessionStorage.getItem('currentBarber');
   return barberData ? JSON.parse(barberData) : null;
+}
+
+// Credential management functions
+function saveCredentials(email, password, barber) {
+  try {
+    const credentials = {
+      email: email,
+      password: password,
+      barber: barber,
+      timestamp: Date.now()
+    };
+    
+    // Encrypt the credentials (simple base64 encoding)
+    const encryptedCredentials = btoa(JSON.stringify(credentials));
+    localStorage.setItem('adminCredentials', encryptedCredentials);
+    
+    console.log('✅ Credentials saved successfully');
+  } catch (error) {
+    console.error('❌ Error saving credentials:', error);
+  }
+}
+
+function loadSavedCredentials() {
+  try {
+    const encryptedCredentials = localStorage.getItem('adminCredentials');
+    if (!encryptedCredentials) return;
+    
+    const credentials = JSON.parse(atob(encryptedCredentials));
+    
+    // Check if credentials are not too old (30 days)
+    const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
+    if (Date.now() - credentials.timestamp > thirtyDaysInMs) {
+      clearSavedCredentials();
+      return;
+    }
+    
+    // Auto-fill the form
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const rememberCheckbox = document.getElementById('rememberMe');
+    
+    if (emailInput && passwordInput && rememberCheckbox) {
+      emailInput.value = credentials.email;
+      passwordInput.value = credentials.password;
+      rememberCheckbox.checked = true;
+    }
+    
+    console.log('✅ Credentials loaded successfully');
+  } catch (error) {
+    console.error('❌ Error loading credentials:', error);
+    clearSavedCredentials();
+  }
+}
+
+function clearSavedCredentials() {
+  try {
+    localStorage.removeItem('adminCredentials');
+    console.log('✅ Credentials cleared');
+  } catch (error) {
+    console.error('❌ Error clearing credentials:', error);
+  }
+}
+
+// Auto-login function for PWA
+async function attemptAutoLogin() {
+  try {
+    const encryptedCredentials = localStorage.getItem('adminCredentials');
+    if (!encryptedCredentials) return false;
+    
+    const credentials = JSON.parse(atob(encryptedCredentials));
+    
+    // Check if credentials are not too old (30 days)
+    const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
+    if (Date.now() - credentials.timestamp > thirtyDaysInMs) {
+      clearSavedCredentials();
+      return false;
+    }
+    
+    // Try to login with saved credentials
+    const { user, barber } = await adminAuth.loginBarber(credentials.email, credentials.password);
+    
+    // Store barber data in session
+    sessionStorage.setItem('currentBarber', JSON.stringify(barber));
+    
+    console.log('✅ Auto-login successful');
+    return true;
+  } catch (error) {
+    console.error('❌ Auto-login failed:', error);
+    clearSavedCredentials();
+    return false;
+  }
 }
