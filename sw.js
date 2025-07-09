@@ -1,4 +1,4 @@
-const CACHE_NAME = 'barberia-admin-cache-v7';
+const CACHE_NAME = 'barberia-admin-cache-v8';
 const urlsToCache = [
   './admin-login.html',
   './admin-panel.html',
@@ -9,18 +9,9 @@ const urlsToCache = [
   './js/supabase.js',
   './js/config.js',
   './js/pwa.js',
-  './js/pwa-debug.js',
-  './js/pwa-diagnostics.js',
-  './js/pwa-checker.js',
   './manifest.json',
-  './assets/images/barber-icon-48.png',
-  './assets/images/barber-icon-72.png',
-  './assets/images/barber-icon-96.png',
-  './assets/images/barber-icon-144.png',
   './assets/images/barber-icon-192.png',
-  './assets/images/barber-icon-512.png',
-  './assets/images/barber-icon-192-maskable.png',
-  './assets/images/barber-icon-512-maskable.png'
+  './assets/images/barber-icon-512.png'
 ];
 
 self.addEventListener('install', event => {
@@ -42,15 +33,10 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Only handle requests within the admin scope
-  if (event.request.url.includes('/admin-login.html') || 
-      event.request.url.includes('/admin-panel.html') ||
-      event.request.url.includes('/css/admin-style.css') ||
-      event.request.url.includes('/css/style.css') ||
-      event.request.url.includes('/js/admin-') ||
-      event.request.url.includes('/js/supabase.js') ||
-      event.request.url.includes('/js/config.js') ||
-      event.request.url.includes('/js/pwa') ||
+  // Basic caching for admin files
+  if (event.request.url.includes('/admin-') || 
+      event.request.url.includes('/css/') ||
+      event.request.url.includes('/js/') ||
       event.request.url.includes('/manifest.json') ||
       event.request.url.includes('/assets/images/barber-icon-')) {
     
@@ -58,14 +44,10 @@ self.addEventListener('fetch', event => {
       caches.match(event.request)
         .then(response => {
           if (response) {
-            console.log('✅ SW: Serving from cache:', event.request.url);
             return response;
           }
-          
-          console.log('🌐 SW: Fetching from network:', event.request.url);
           return fetch(event.request)
             .then(response => {
-              // Cache successful responses
               if (response.status === 200) {
                 const responseClone = response.clone();
                 caches.open(CACHE_NAME)
@@ -76,8 +58,6 @@ self.addEventListener('fetch', event => {
               return response;
             })
             .catch(() => {
-              console.log('❌ SW: Network failed, using offline fallback');
-              // Fallback for offline
               if (event.request.destination === 'document') {
                 return caches.match('./admin-login.html');
               }
