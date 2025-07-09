@@ -2062,6 +2062,11 @@ html, body {
     white-space: nowrap;
   }
   
+  /* Mobile menu layout for reservation page */
+  .reserva-html .nav-top {
+    margin-bottom: 0.5rem;
+  }
+  
   /* Logo optimizations - smaller for mobile */
   .logo-container {
     margin: 0;
@@ -2083,13 +2088,21 @@ html, body {
     letter-spacing: 0.5px;
   }
   
-  /* Social icons mobile - centered for small screens */
+  /* Social icons mobile - properly positioned to match the original design */
   .social-icons {
-    gap: 0.5rem;
-    order: 3;
-    margin-top: 1rem;
+    position: static;
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
     justify-content: center;
     padding-right: 0; /* Reset right padding on mobile */
+    transform: none; /* Reset transform */
+  }
+  
+  /* Make social icons larger on mobile */
+  .social-icon {
+    font-size: 1.25rem;
   }
   
   /* Header CTA button mobile positioning */
