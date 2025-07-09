@@ -2418,3 +2418,21 @@ html, body {
     align-self: flex-start;
   }
 }
+
+/* Selected service styling for all screen sizes */
+.service-option.selected {
+    border-color: var(--luxury-gold);
+    background: var(--gold-accent);
+}
+.service-option.selected .service-price {
+    color: var(--luxury-gold);
+}
+/* Selected state (all screen sizes) */
+.service-option.selected {
+  border-color: var(--luxury-gold);
+  background: var(--gold-accent);
+  box-shadow: 0 0 10px rgba(212,175,55,0.5);
+}
+.service-option.selected .service-price {
+  color: var(--luxury-gold);
+}
