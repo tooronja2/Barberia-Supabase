@@ -2090,17 +2090,17 @@ html, body {
     letter-spacing: 0.5px;
   }
   
-  /* Social icons mobile - perfectly centered with proper spacing */
+  /* Social icons mobile - perfectly centered with elegant spacing */
   .social-icons {
     position: static;
     display: flex;
-    gap: 2rem; /* Increased gap between icons for better visibility */
-    margin-top: 0.5rem;
-    margin-bottom: 1.25rem;
+    gap: 3rem; /* Elegant spacing between icons */
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding-right: 0; /* Reset right padding on mobile */
+    padding: 0; /* Reset all padding */
     transform: none; /* Reset transform */
   }
   
