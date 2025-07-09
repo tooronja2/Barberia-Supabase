@@ -2090,14 +2090,16 @@ html, body {
     letter-spacing: 0.5px;
   }
   
-  /* Social icons mobile - properly positioned to match the original design */
+  /* Social icons mobile - perfectly centered with proper spacing */
   .social-icons {
     position: static;
     display: flex;
-    gap: 1rem;
+    gap: 2rem; /* Increased gap between icons for better visibility */
     margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     justify-content: center;
+    align-items: center;
+    width: 100%;
     padding-right: 0; /* Reset right padding on mobile */
     transform: none; /* Reset transform */
   }
