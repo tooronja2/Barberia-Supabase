@@ -134,7 +134,7 @@ async function loadServices() {
     
     try {
         // Show loading state
-        showLoadingReservation(serviceSelection, 'Cargando servicios...', 'Preparando opciones disponibles');
+        showLoadingReservation(serviceSelection, 'Cargando servicios...', 'Por favor espere');
         
         // FORCE: Always try to load from database with centralized images
         let services = null;
@@ -277,9 +277,9 @@ async function getStaticServicesWithCentralizedImages() {
 // Loading state utilities for reservation
 function showLoadingReservation(container, title = 'Cargando...', subtitle = '') {
     container.innerHTML = `
-        <div class="loading-container">
+        <div class="loading-container-reservation">
             <div class="loading-spinner"></div>
-            <div class="loading-text">${title}</div>
+            <div class="loading-title">${title}</div>
             ${subtitle ? `<div class="loading-subtitle">${subtitle}</div>` : ''}
         </div>
     `;

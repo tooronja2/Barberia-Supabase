@@ -22,7 +22,7 @@ async function loadServices() {
     sessionStorage.removeItem('barberia_services');
     
     // Show loading state
-    showLoading(servicesGrid, 'Cargando servicios...', 'Obteniendo información desde la base de datos');
+    showLoading(servicesGrid, 'Cargando servicios...', 'Por favor espere');
     
     // Images are now managed centrally in service-images.js
     console.log('📸 Using centralized service image configuration');
