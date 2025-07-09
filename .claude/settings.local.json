@@ -20,7 +20,8 @@
       "Bash(git commit:*)",
       "Bash(rm:*)",
       "Bash(sed:*)",
-      "Bash(convert:*)"
+      "Bash(convert:*)",
+      "Bash(curl:*)"
     ],
     "deny": []
   }
