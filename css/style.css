@@ -315,11 +315,12 @@ body::before {
 .social-icons {
   position: absolute;
   top: 50%;
-  right: var(--space-lg); /* align with 'Contacto' margin */
+  right: 0; /* Match nav-right position */
   transform: translateY(-50%);
   display: flex;
   flex-direction: row-reverse; /* icons from right to left */
   gap: var(--space-sm);
+  padding-right: var(--space-lg); /* Add padding to match nav links */
 }
 
 .social-icon {
