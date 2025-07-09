@@ -1,26 +1,26 @@
-const CACHE_NAME = 'barberia-admin-cache-v6';
+const CACHE_NAME = 'barberia-admin-cache-v7';
 const urlsToCache = [
-  '/admin-login.html',
-  '/admin-panel.html',
-  '/css/admin-style.css',
-  '/css/style.css',
-  '/js/admin-auth.js',
-  '/js/admin-panel.js',
-  '/js/supabase.js',
-  '/js/config.js',
-  '/js/pwa.js',
-  '/js/pwa-debug.js',
-  '/js/pwa-diagnostics.js',
-  '/js/pwa-checker.js',
-  '/manifest.json',
-  '/assets/images/barber-icon-48.png',
-  '/assets/images/barber-icon-72.png',
-  '/assets/images/barber-icon-96.png',
-  '/assets/images/barber-icon-144.png',
-  '/assets/images/barber-icon-192.png',
-  '/assets/images/barber-icon-512.png',
-  '/assets/images/barber-icon-192-maskable.png',
-  '/assets/images/barber-icon-512-maskable.png'
+  './admin-login.html',
+  './admin-panel.html',
+  './css/admin-style.css',
+  './css/style.css',
+  './js/admin-auth.js',
+  './js/admin-panel.js',
+  './js/supabase.js',
+  './js/config.js',
+  './js/pwa.js',
+  './js/pwa-debug.js',
+  './js/pwa-diagnostics.js',
+  './js/pwa-checker.js',
+  './manifest.json',
+  './assets/images/barber-icon-48.png',
+  './assets/images/barber-icon-72.png',
+  './assets/images/barber-icon-96.png',
+  './assets/images/barber-icon-144.png',
+  './assets/images/barber-icon-192.png',
+  './assets/images/barber-icon-512.png',
+  './assets/images/barber-icon-192-maskable.png',
+  './assets/images/barber-icon-512-maskable.png'
 ];
 
 self.addEventListener('install', event => {
@@ -79,7 +79,7 @@ self.addEventListener('fetch', event => {
               console.log('❌ SW: Network failed, using offline fallback');
               // Fallback for offline
               if (event.request.destination === 'document') {
-                return caches.match('/admin-login.html');
+                return caches.match('./admin-login.html');
               }
             });
         })
