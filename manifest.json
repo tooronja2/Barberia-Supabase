@@ -1,0 +1,21 @@
+{
+  "name": "Barbería Central - Admin",
+  "short_name": "Admin BC",
+  "description": "Panel de administración para Barbería Central.",
+  "start_url": "/admin-login.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#d4af37",
+  "icons": [
+    {
+      "src": "assets/images/barber-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/barber-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
