@@ -1357,7 +1357,7 @@ body::before {
     margin-bottom: 1.5rem;
     width: 100%;
     justify-items: center;
-    align-items: center;
+    align-items: stretch; /* Make items stretch to fill height */
   }
 }
 
@@ -1369,9 +1369,6 @@ body::before {
   cursor: pointer;
   transition: var(--transition-base);
   text-align: center;
-  /* CRITICAL: Force uniform dimensions */
-  min-height: 280px;
-  max-height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1389,8 +1386,8 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    aspect-ratio: 1;
+    justify-content: space-between; /* Distribute content */
+    height: 100%; /* Ensure it takes full height of grid cell */
     min-height: auto;
     max-height: none;
     box-sizing: border-box;
