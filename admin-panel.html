@@ -22,6 +22,7 @@
             </div>
             <div class="admin-user-info">
                 <button id="installButton" class="install-button" style="display: none;">📱 Instalar App</button>
+                <button id="testPWAButton" class="install-button" style="background: #17a2b8; display: inline-flex;">🔍 Test PWA</button>
                 <span id="welcomeMessage">Bienvenido, Barbero</span>
                 <button id="logoutButton" class="logout-button">Salir</button>
             </div>
@@ -190,6 +191,57 @@
         } else {
             console.log('❌ ServiceWorker not supported');
         }
+    </script>
+    <script>
+        // PWA Test Button
+        document.addEventListener('DOMContentLoaded', () => {
+            const testButton = document.getElementById('testPWAButton');
+            if (testButton) {
+                testButton.addEventListener('click', () => {
+                    const hasPrompt = window.deferredPrompt !== undefined;
+                    const userAgent = navigator.userAgent;
+                    const isChrome = userAgent.includes('Chrome') && !userAgent.includes('Edge');
+                    const isEdge = userAgent.includes('Edge');
+                    const isSafari = userAgent.includes('Safari') && !userAgent.includes('Chrome');
+                    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+                    
+                    let result = '🔍 PWA STATUS REPORT:\\n\\n';
+                    
+                    result += `📱 Browser: ${isChrome ? 'Chrome' : isEdge ? 'Edge' : isSafari ? 'Safari' : 'Other'}\\n`;
+                    result += `🔗 HTTPS: ${location.protocol === 'https:' ? 'YES' : 'NO'}\\n`;
+                    result += `⚙️ Service Worker: ${navigator.serviceWorker ? 'Supported' : 'Not supported'}\\n`;
+                    result += `📋 Manifest: ${document.querySelector('link[rel="manifest"]') ? 'Found' : 'Missing'}\\n`;
+                    result += `📱 Display Mode: ${isStandalone ? 'Standalone (Installed)' : 'Browser'}\\n`;
+                    result += `🎯 beforeinstallprompt: ${hasPrompt ? 'AVAILABLE' : 'NOT AVAILABLE'}\\n\\n`;
+                    
+                    if (hasPrompt) {
+                        result += '✅ PWA REAL DETECTADA!\\n';
+                        result += 'El botón "Instalar App" debería funcionar.\\n\\n';
+                        result += 'Si no funciona, es un bug.';
+                    } else if (isChrome || isEdge) {
+                        result += '❌ PWA NO TOTALMENTE FUNCIONAL\\n';
+                        result += 'beforeinstallprompt no se disparó.\\n\\n';
+                        result += 'POSIBLES CAUSAS:\\n';
+                        result += '• Ya instalada previamente\\n';
+                        result += '• Rechazada anteriormente\\n';
+                        result += '• Falta algún requisito técnico\\n';
+                        result += '• Necesita modo incógnito\\n\\n';
+                        result += 'SOLUCIÓN: Modo incógnito + limpiar datos';
+                    } else if (isSafari) {
+                        result += '⚠️ SAFARI DETECTADO\\n';
+                        result += 'Safari no usa beforeinstallprompt.\\n\\n';
+                        result += 'INSTALACIÓN MANUAL:\\n';
+                        result += '1. Toca Compartir (□↗)\\n';
+                        result += '2. "Agregar a pantalla de inicio"\\n';
+                        result += '3. Confirma "Agregar"\\n\\n';
+                        result += 'Si funciona = PWA real\\n';
+                        result += 'Si solo agrega acceso = no PWA';
+                    }
+                    
+                    alert(result);
+                });
+            }
+        });
     </script>
     <script type="module" src="js/pwa-checker.js"></script>
     <script type="module" src="js/pwa-diagnostics.js"></script>
