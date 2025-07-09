@@ -2406,56 +2406,25 @@ html, body {
   }
 }
 
-/* ===== PREVENCIÓN TOTAL DE SCROLL EN MÓVIL ===== */
+/* ===== PREVENCIÓN SIMPLE DE SCROLL ENTRE PASOS ===== */
 @media (max-width: 768px) {
-  /* CRÍTICO: Prevenir scroll en body y html */
-  html, body {
-    overflow: hidden; /* No scroll en toda la página */
-    height: 100vh;
-    position: fixed; /* Fijar la posición */
-    width: 100%;
-  }
-  
-  /* CRÍTICO: Contenedor de reserva con scroll interno controlado */
-  .reservation-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden; /* Sin scroll externo */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Prevenir scroll en todos los contenedores de paso */
+  /* Solo ocultar pasos no activos - mantener scroll normal */
   .step-container {
-    overflow: hidden !important;
-    position: relative;
-    touch-action: none; /* Prevenir gestos de scroll */
+    display: none;
   }
   
-  /* Solo el customer form puede hacer scroll interno si es necesario */
-  .customer-form {
-    touch-action: pan-y; /* Solo scroll vertical en el form */
-  }
-  
-  /* Prevenir cualquier scroll horizontal */
-  * {
-    overflow-x: hidden !important;
+  .step-container.active {
+    display: block;
   }
 }
 
-/* Restaurar scroll normal en desktop */
+/* Restaurar comportamiento normal en desktop */
 @media (min-width: 769px) {
-  html, body {
-    overflow: auto;
-    height: auto;
-    position: static;
+  .step-container {
+    display: block;
   }
   
-  .reservation-container {
-    position: static;
-    overflow: visible;
+  .step-container.active {
+    display: block;
   }
 }
