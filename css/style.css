@@ -1294,21 +1294,23 @@ body::before {
   box-shadow: var(--shadow-medium);
 }
 
-/* Mobile optimized step container - optimized for 2-column service grid */
+/* Mobile optimized step container - only show active step */
 @media (max-width: 768px) {
   .step-container {
+    display: none;
+  }
+  .step-container.active {
+    display: flex;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 12px;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  
   /* Ensure service grid container has proper spacing */
   .step-container .service-grid {
     margin-top: 1rem;
