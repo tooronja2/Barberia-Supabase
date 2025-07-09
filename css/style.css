@@ -208,6 +208,8 @@ body::before {
   margin: 0 auto;
   padding: 0 var(--space-xl);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Navigation Layout */
@@ -313,13 +315,12 @@ body::before {
 
 /* Social Icons & CTA */
 .social-icons {
-  position: absolute;
-  top: 50%;
-  right: 0; /* Match nav-right position */
-  transform: translateY(-50%);
   display: flex;
   flex-direction: row-reverse; /* icons from right to left */
   gap: var(--space-sm);
+  justify-content: flex-end; /* Align to the right */
+  margin-top: -10px; /* Adjust spacing to position below nav */
+  margin-bottom: 10px; /* Add space before any content below */
   padding-right: var(--space-lg); /* Add padding to match nav links */
 }
 
@@ -2019,6 +2020,8 @@ html, body {
     box-sizing: border-box;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
   }
   
   .nav-top {
@@ -2080,16 +2083,13 @@ html, body {
     letter-spacing: 0.5px;
   }
   
-  /* Social icons mobile - properly positioned to evitar overlap */
+  /* Social icons mobile - centered for small screens */
   .social-icons {
-    position: relative;
-    top: auto;
-    right: auto;
     gap: 0.5rem;
     order: 3;
     margin-top: 1rem;
     justify-content: center;
-    display: flex;
+    padding-right: 0; /* Reset right padding on mobile */
   }
   
   /* Header CTA button mobile positioning */
