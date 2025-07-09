@@ -2448,6 +2448,5 @@ html, body {
   .reservation-details p span {
     text-align: left;
     align-self: flex-start;
-    margin-left: var(--space-md);
   }
 }
