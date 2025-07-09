@@ -114,13 +114,40 @@ async function runPWADiagnostics() {
         console.log(`\\n🔔 INSTALL PROMPT:`);
         console.log(`   beforeinstallprompt fired: ${hasPrompt}`);
         
-        if (!hasPrompt && results.installable) {
-            console.log('\\n💡 TROUBLESHOOTING:');
-            console.log('   - Try opening in incognito/private mode');
-            console.log('   - Clear browser cache and data');
-            console.log('   - Ensure all files are served over HTTPS');
-            console.log('   - Check browser developer tools > Application > Manifest');
-            console.log('   - Verify Service Worker is active in Application > Service Workers');
+        if (!hasPrompt) {
+            console.log('\\n❌ PWA NOT INSTALLABLE - POSSIBLE REASONS:');
+            console.log('   1. Already installed (check if running in standalone mode)');
+            console.log('   2. Service Worker not properly registered/active');
+            console.log('   3. Manifest not properly loaded or has errors');
+            console.log('   4. Missing required manifest fields');
+            console.log('   5. Icons not accessible or wrong format');
+            console.log('   6. Not served over HTTPS (except localhost)');
+            console.log('   7. Browser doesn\\'t support PWA installation');
+            console.log('   8. User has dismissed install prompt too many times');
+            
+            console.log('\\n💡 NEXT STEPS:');
+            console.log('   1. Check DevTools > Application > Manifest for errors');
+            console.log('   2. Check DevTools > Application > Service Workers status');
+            console.log('   3. Try incognito/private mode');
+            console.log('   4. Clear all browser data for this site');
+            console.log('   5. Check Network tab for failed requests');
+            
+            // Additional debugging
+            console.log('\\n🔍 DETAILED STATUS:');
+            console.log('   Current URL:', window.location.href);
+            console.log('   User Agent:', navigator.userAgent);
+            console.log('   Standalone mode:', window.matchMedia('(display-mode: standalone)').matches);
+            console.log('   Manifest element:', document.querySelector('link[rel="manifest"]'));
+            
+            // Try to fetch manifest manually
+            fetch('./manifest.json')
+                .then(response => response.json())
+                .then(manifest => {
+                    console.log('   Manifest loaded successfully:', manifest);
+                })
+                .catch(error => {
+                    console.error('   ❌ Manifest fetch failed:', error);
+                });
         }
     }, 3000);
     

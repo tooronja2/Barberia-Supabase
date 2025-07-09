@@ -1,4 +1,4 @@
-const CACHE_NAME = 'barberia-admin-cache-v3';
+const CACHE_NAME = 'barberia-admin-cache-v4';
 const urlsToCache = [
   './',
   './admin-login.html',
@@ -12,6 +12,7 @@ const urlsToCache = [
   './js/pwa.js',
   './js/pwa-debug.js',
   './js/pwa-diagnostics.js',
+  './js/pwa-checker.js',
   './manifest.json',
   './assets/images/barber-icon-192.png',
   './assets/images/barber-icon-512.png'
