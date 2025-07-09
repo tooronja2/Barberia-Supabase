@@ -43,9 +43,13 @@ self.addEventListener('fetch', event => {
         if (response) {
           return response;
         }
-        return fetch(event.request);
-      }
-    )
+        return fetch(event.request).catch(() => {
+          // Fallback for offline
+          if (event.request.destination === 'document') {
+            return caches.match('./admin-login.html');
+          }
+        });
+      })
   );
 });
 
