@@ -1,0 +1,99 @@
+/* Estilos para la sección de servicios "Lo que mejor sabemos hacer" */
+
+/* Contenedor principal de servicios */
+.services-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna por defecto */
+  gap: 16px;
+  padding: 10px;
+}
+
+/* En dispositivos móviles, activar el grid de 2 columnas */
+@media screen and (min-width: 480px) {
+  .services-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+    gap: 12px;
+  }
+}
+
+/* En tablets y escritorio, mantenemos 3 o 4 columnas */
+@media screen and (min-width: 768px) {
+  .services-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .services-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Tarjeta de servicio individual */
+.service-card {
+  background-color: rgba(30, 30, 30, 0.8); /* Mantener fondo oscuro */
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ícono del servicio */
+.service-icon {
+  color: #d4af37; /* Color dorado */
+  font-size: 32px;
+  margin-bottom: 12px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Título del servicio */
+.service-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+/* Descripción del servicio */
+.service-description {
+  color: #e0e0e0;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Ajustes específicos para móvil */
+@media screen and (max-width: 480px) {
+  .service-card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .service-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .service-description {
+    font-size: 13px;
+  }
+}
