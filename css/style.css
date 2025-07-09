@@ -932,8 +932,6 @@ body::before {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    text-align: center;
   }
 }
 
@@ -1255,11 +1253,11 @@ body::before {
     width: 35px;
     height: 35px;
     font-size: 0.9rem;
+    color: var(--text-grey);
+    background: var(--charcoal);
+    transition: var(--transition-base);
+    position: relative;
   }
-  color: var(--text-grey);
-  background: var(--charcoal);
-  transition: var(--transition-base);
-  position: relative;
 }
 
 .progress-step.active {
@@ -1454,8 +1452,10 @@ body::before {
   width: 100%;
   height: 150px;
   object-fit: cover;
+  object-position: center;
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-md);
+  display: block;
 }
 
 .service-option h3 {
@@ -2136,23 +2136,6 @@ html, body {
     font-size: 0.75rem;
   }
   
-  /* Override: Use main mobile hero styles defined above */
-  .hero {
-    /* Styles handled by main mobile @media rules above */
-  }
-  
-  .hero-content {
-    /* Styles handled by main mobile @media rules above */
-  }
-  
-  .hero-content h1 {
-    /* Styles handled by main mobile @media rules above */
-  }
-  
-  .hero-content p {
-    /* Styles handled by main mobile @media rules above */
-  }
-  
   .btn-primary {
     padding: 0.5rem 1rem; /* Smaller button */
     font-size: 0.75rem;
@@ -2171,10 +2154,6 @@ html, body {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-  }
-  
-  .services-grid {
-    /* Styles handled by main mobile @media rules above */
   }
   
   .service-card {

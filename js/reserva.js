@@ -134,7 +134,7 @@ async function loadServices() {
     
     try {
         // Show loading state
-        showLoadingReservation(serviceSelection, 'Cargando servicios...', 'Sincronizando con imágenes centralizadas');
+        showLoadingReservation(serviceSelection, 'Cargando servicios...', 'Preparando opciones disponibles');
         
         // FORCE: Always try to load from database with centralized images
         let services = null;
@@ -877,7 +877,6 @@ function setupNavigation() {
     // Step 6 navigation
     const prevStep6 = document.getElementById('prevStep6');
     const confirmBtn = document.getElementById('confirmReservation');
-    const newReservationBtn = document.getElementById('newReservation');
     
     if (prevStep6) {
         prevStep6.addEventListener('click', () => {
@@ -890,13 +889,6 @@ function setupNavigation() {
         confirmBtn.addEventListener('click', () => {
             console.log('🖱️ Click en Confirmar Reserva');
             confirmReservation();
-        });
-    }
-    
-    if (newReservationBtn) {
-        newReservationBtn.addEventListener('click', () => {
-            console.log('🖱️ Click en Nueva Reserva');
-            resetReservation();
         });
     }
     
