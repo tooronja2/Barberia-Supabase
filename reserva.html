@@ -67,11 +67,11 @@
         <div class="step-container active" data-step="1">
             <h2 class="step-title">Selecciona tu Servicio</h2>
             <div class="service-grid" id="serviceSelection">
-                <!-- Services will be loaded dynamically from Supabase with real durations -->
-                <div style="text-align: center; color: #b8b8b8; padding: 3rem;">
-                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
-                    <p>Cargando servicios,...</p>
-                    <p style="font-size: 0.9rem; opacity: 0.7;">Por favor espera un momento...</p>
+                <!-- Services will be loaded dynamically -->
+                <div class="loading-container-reservation">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-title">Cargando servicios...</div>
+                    <div class="loading-subtitle">Por favor espere</div>
                 </div>
             </div>
             <div class="step-navigation">
