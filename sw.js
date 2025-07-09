@@ -1,6 +1,5 @@
-const CACHE_NAME = 'barberia-admin-cache-v5';
+const CACHE_NAME = 'barberia-admin-cache-v6';
 const urlsToCache = [
-  '/',
   '/admin-login.html',
   '/admin-panel.html',
   '/css/admin-style.css',
@@ -14,8 +13,14 @@ const urlsToCache = [
   '/js/pwa-diagnostics.js',
   '/js/pwa-checker.js',
   '/manifest.json',
+  '/assets/images/barber-icon-48.png',
+  '/assets/images/barber-icon-72.png',
+  '/assets/images/barber-icon-96.png',
+  '/assets/images/barber-icon-144.png',
   '/assets/images/barber-icon-192.png',
-  '/assets/images/barber-icon-512.png'
+  '/assets/images/barber-icon-512.png',
+  '/assets/images/barber-icon-192-maskable.png',
+  '/assets/images/barber-icon-512-maskable.png'
 ];
 
 self.addEventListener('install', event => {
@@ -37,20 +42,49 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).catch(() => {
-          // Fallback for offline
-          if (event.request.destination === 'document') {
-            return caches.match('/admin-login.html');
+  // Only handle requests within the admin scope
+  if (event.request.url.includes('/admin-login.html') || 
+      event.request.url.includes('/admin-panel.html') ||
+      event.request.url.includes('/css/admin-style.css') ||
+      event.request.url.includes('/css/style.css') ||
+      event.request.url.includes('/js/admin-') ||
+      event.request.url.includes('/js/supabase.js') ||
+      event.request.url.includes('/js/config.js') ||
+      event.request.url.includes('/js/pwa') ||
+      event.request.url.includes('/manifest.json') ||
+      event.request.url.includes('/assets/images/barber-icon-')) {
+    
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          if (response) {
+            console.log('✅ SW: Serving from cache:', event.request.url);
+            return response;
           }
-        });
-      })
-  );
+          
+          console.log('🌐 SW: Fetching from network:', event.request.url);
+          return fetch(event.request)
+            .then(response => {
+              // Cache successful responses
+              if (response.status === 200) {
+                const responseClone = response.clone();
+                caches.open(CACHE_NAME)
+                  .then(cache => {
+                    cache.put(event.request, responseClone);
+                  });
+              }
+              return response;
+            })
+            .catch(() => {
+              console.log('❌ SW: Network failed, using offline fallback');
+              // Fallback for offline
+              if (event.request.destination === 'document') {
+                return caches.match('/admin-login.html');
+              }
+            });
+        })
+    );
+  }
 });
 
 self.addEventListener('activate', event => {

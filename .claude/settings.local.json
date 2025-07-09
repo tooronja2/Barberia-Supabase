@@ -21,7 +21,8 @@
       "Bash(rm:*)",
       "Bash(sed:*)",
       "Bash(convert:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }
