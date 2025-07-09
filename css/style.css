@@ -1436,10 +1436,6 @@ body::before {
     border-color: var(--luxury-gold);
     background: var(--gold-accent);
   }
-  
-  .service-option.selected .service-price {
-    color: var(--luxury-gold);
-  }
 }
 
 .service-option .service-image {
@@ -2437,4 +2433,12 @@ html, body {
 }
 .service-option.selected .service-price {
   color: var(--luxury-gold);
+}
+
+/* Override: solo mostrar paso activo y ocultar el resto */
+.step-container:not(.active) {
+  display: none !important;
+}
+.step-container.active {
+  display: block !important;
 }
