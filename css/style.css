@@ -315,9 +315,10 @@ body::before {
 .social-icons {
   position: absolute;
   top: 50%;
-  right: 2rem; /* separa iconos del borde */
+  right: var(--space-lg); /* align with 'Contacto' margin */
   transform: translateY(-50%);
   display: flex;
+  flex-direction: row-reverse; /* icons from right to left */
   gap: var(--space-sm);
 }
 
