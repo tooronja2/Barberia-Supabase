@@ -18,15 +18,29 @@ window.addEventListener('load', () => {
     } else {
         console.log('📱 PWA Debug: App is running in browser mode');
         
-        // Show install button for all users after a delay
+        // Wait for beforeinstallprompt or show manual instructions
         setTimeout(() => {
             const installButton = document.getElementById('installButton');
-            if (installButton) {
-                console.log('🔍 PWA Debug: Showing install button for all users');
-                installButton.style.display = 'inline-flex';
-                installButton.textContent = '📱 Instalar App';
+            if (installButton && !deferredPrompt) {
+                console.log('🔍 PWA Debug: No beforeinstallprompt after 3 seconds');
+                
+                // Check if this is a PWA-capable browser
+                const userAgent = navigator.userAgent.toLowerCase();
+                const isChrome = userAgent.includes('chrome') && !userAgent.includes('edge');
+                const isEdge = userAgent.includes('edge');
+                const isSafari = userAgent.includes('safari') && !userAgent.includes('chrome');
+                const isFirefox = userAgent.includes('firefox');
+                
+                // Only show button in browsers that support PWA installation
+                if (isChrome || isEdge || isSafari) {
+                    installButton.style.display = 'inline-flex';
+                    installButton.textContent = '📱 Instalar App';
+                    console.log('🔍 PWA Debug: Showing install button for PWA-capable browser');
+                } else {
+                    console.log('❌ PWA Debug: Browser does not support PWA installation');
+                }
             }
-        }, 2000);
+        }, 3000);
     }
 });
 
