@@ -3,7 +3,7 @@
   "name": "Barbería Central - Panel Admin",
   "short_name": "Admin BC",
   "description": "Panel de administración para Barbería Central. Gestiona turnos, clientes y reportes.",
-  "start_url": "./admin-login.html",
+  "start_url": "./admin-panel.html",
   "display": "standalone",
   "background_color": "#1a1a1a",
   "theme_color": "#d4af37",
