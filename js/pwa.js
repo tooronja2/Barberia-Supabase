@@ -84,37 +84,49 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 console.log('❌ PWA Debug: No deferred prompt available');
                 
-                // Check browser and show appropriate message
+                // Check browser and device
                 const userAgent = navigator.userAgent.toLowerCase();
                 const isAndroid = userAgent.includes('android');
                 const isIOS = userAgent.includes('iphone') || userAgent.includes('ipad');
-                const isChrome = userAgent.includes('chrome');
+                const isChrome = userAgent.includes('chrome') && !userAgent.includes('edge');
                 const isEdge = userAgent.includes('edge');
                 const isSafari = userAgent.includes('safari') && !userAgent.includes('chrome');
+                const isDesktop = !isAndroid && !isIOS;
                 
-                let message = 'Para instalar esta aplicación:\\n\\n';
+                console.log('🔍 Browser detection:', { isAndroid, isIOS, isChrome, isEdge, isSafari, isDesktop });
                 
-                if (isAndroid) {
-                    if (isChrome) {
-                        message += '• Usa el menú de Chrome (⋮) > "Agregar a pantalla de inicio"';
-                    } else if (isEdge) {
-                        message += '• Usa el menú de Edge (⋯) > "Aplicaciones" > "Instalar esta aplicación"';
-                    } else {
-                        message += '• Abre esta página en Chrome o Edge\\n• Busca "Agregar a pantalla de inicio" en el menú';
-                    }
-                } else if (isIOS) {
-                    if (isSafari) {
-                        message += '• Toca el botón Compartir (□↗)\\n• Selecciona "Agregar a pantalla de inicio"';
-                    } else {
-                        message += '• Abre esta página en Safari\\n• Usa Compartir > "Agregar a pantalla de inicio"';
-                    }
+                let message = '📱 INSTALAR COMO APLICACIÓN:\\n\\n';
+                
+                if (isIOS && isSafari) {
+                    message += '✅ Tu PWA está lista para instalar!\\n\\n';
+                    message += '1. Toca el botón COMPARTIR (□↗) abajo\\n';
+                    message += '2. Selecciona "Agregar a pantalla de inicio"\\n';
+                    message += '3. Confirma "Agregar"\\n\\n';
+                    message += '¡Luego podrás acceder como app desde tu pantalla de inicio!';
+                } else if (isAndroid && isChrome) {
+                    message += '✅ Tu PWA está lista para instalar!\\n\\n';
+                    message += '1. Toca el menú de Chrome (⋮)\\n';
+                    message += '2. Selecciona "Agregar a pantalla de inicio"\\n';
+                    message += '3. Confirma "Agregar"\\n\\n';
+                    message += '¡Luego podrás acceder como app desde tu pantalla de inicio!';
+                } else if (isAndroid && isEdge) {
+                    message += '✅ Tu PWA está lista para instalar!\\n\\n';
+                    message += '1. Toca el menú de Edge (⋯)\\n';
+                    message += '2. Ve a "Aplicaciones"\\n';
+                    message += '3. Selecciona "Instalar esta aplicación"\\n';
+                    message += '4. Confirma "Instalar"';
+                } else if (isDesktop && (isChrome || isEdge)) {
+                    message += '✅ Tu PWA está lista para instalar!\\n\\n';
+                    message += '1. Busca el ícono de instalación en la barra de direcciones\\n';
+                    message += '2. O usa el menú > "Instalar aplicación"\\n';
+                    message += '3. Confirma "Instalar"\\n\\n';
+                    message += '¡Luego aparecerá en tu escritorio/menú inicio!';
                 } else {
-                    // Desktop
-                    if (isChrome || isEdge) {
-                        message += '• Busca el ícono de instalación en la barra de direcciones\\n• O usa el menú > "Instalar aplicación"';
-                    } else {
-                        message += '• Abre esta página en Chrome o Edge\\n• Busca la opción "Instalar aplicación"';
-                    }
+                    message += 'Para la mejor experiencia PWA:\\n\\n';
+                    message += '• En Android: usa Chrome o Edge\\n';
+                    message += '• En iOS: usa Safari\\n';
+                    message += '• En Desktop: usa Chrome o Edge\\n\\n';
+                    message += '¡Recarga la página en el navegador recomendado!';
                 }
                 
                 alert(message);
